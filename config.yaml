@@ -1,0 +1,33 @@
+config:
+  backup: true
+  banner: false
+  create: true
+  dotpath: dotfiles
+  keepdot: false
+  link_dotfile_default: nolink
+  link_on_import: nolink
+  longkey: false
+dotfiles:
+  f_zshrc:
+    src: zshrc
+    dst: ~/.zshrc
+  d_nvim:
+    src: config/nvim
+    dst: ~/.config/nvim
+  d_neofetch:
+    src: config/neofetch
+    dst: ~/.config/neofetch
+  d_zsh:
+    src: local/share/zsh
+    dst: ~/.local/share/zsh
+  f_gitconfig:
+    src: gitconfig
+    dst: ~/.gitconfig
+profiles:
+  seamus-lxc:
+    dotfiles:
+    - f_zshrc
+    - d_nvim
+    - d_neofetch
+    - d_zsh
+    - f_gitconfig

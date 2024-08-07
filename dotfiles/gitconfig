@@ -1,0 +1,15 @@
+[color]
+        diff = auto
+        branch = auto
+        interactive = auto
+        status = auto
+[user]
+        name = Федотов Сергей
+        email = fedotov_sv@taximaxim.ru
+[push]
+        autoSetupRemote = true
+[pull]
+        ff = only
+[log]
+        decorate = true
+        abbrevCommit = true
