@@ -229,9 +229,12 @@ export VAULT_ADDR=https://vault.maxim.services:8200
 ## Load Atuin
 # ZVM plugin will auto execute this zvm_after_init function
 function zvm_after_init() {
-  eval "$(atuin init zsh)"
+  eval "$(atuin init zsh --disable-up-arrow)"
   bindkey -M vicmd '^r' atuin-search-vicmd
 }
+
+# Load up-arrow hack for atuin
+source $HOME/.local/share/zsh/scripts/02_atuin-history-arrow.zsh
 
 ## Run neofetch
 # neofetch

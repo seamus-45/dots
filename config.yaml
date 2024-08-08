@@ -34,6 +34,18 @@ dotfiles:
     src: config/atuin
     dst: ~/.config/atuin
     chmod: '700'
+  f_vifmrc:
+    src: config/vifm/vifmrc
+    dst: ~/.config/vifm/vifmrc
+  f_seamus.vifm:
+    src: config/vifm/colors/seamus.vifm
+    dst: ~/.config/vifm/colors/seamus.vifm
+  f_readme:
+    src: config/vifm/scripts/README
+    dst: ~/.config/vifm/scripts/README
+  f_icons:
+    src: config/vifm/icons
+    dst: ~/.config/vifm/icons
 profiles:
   seamus-lxc:
     dotfiles:
@@ -45,3 +57,7 @@ profiles:
     - f_starship.toml
     - d_htop
     - d_atuin
+    - f_vifmrc
+    - f_seamus.vifm
+    - f_readme
+    - f_icons

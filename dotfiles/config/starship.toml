@@ -15,25 +15,20 @@ style_user = "bold {{@@ user_color @@}}"
 # Second param
 [hostname]
 disabled = false
-format = "[$hostname]($style)"
+format = "[$hostname]($style) in "
 ssh_only = false
 style = "bold dimmed green"
 #trim_at = "-"
 
 # Third param
 [directory]
-format = " in [$path]($style) "
+format = "[$path]($style)[$read_only]($read_only_style) "
 style = "bold cyan"
+read_only = " 󰌾"
+read_only_style = "red"
 truncate_to_repo = true
 truncation_length = 0
 truncation_symbol = "repo: "
-
-# Fourth param
-[sudo]
-disabled = true
-format = " as [$symbol]($style)"
-symbol = " "
-style = "bold red"
 
 # Before all the version info (python, nodejs, php, etc.)
 [git_status]
@@ -46,12 +41,12 @@ style = "white"
 # Last param in the first line/row
 [cmd_duration]
 disabled = false
-format = " took [$duration]($style)"
+format = "took [$duration]($style)"
 min_time = 1
 
 [shlvl]
 disabled = false
-format = " [$symbol$shlvl]($style) "
+format = "[$symbol$shlvl]($style) "
 style = "yellow"
 symbol = "#"
 
