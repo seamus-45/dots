@@ -32,18 +32,18 @@ dotfiles:
   d_atuin:
     src: config/atuin
     dst: ~/.config/atuin
-  d_vifm:
-    src: config/vifm
-    dst: ~/.config/vifm
-    upignore:
-      - '*/vifm-help.txt'
-      - '*/vifminfo*'
-    instignore:
-      - '*/vifm-help.txt'
-      - '*/vifminfo*'
-    cmpignore:
-      - '*/vifm-help.txt'
-      - '*/vifminfo*'
+  f_vifmrc:
+    src: config/vifm/vifmrc
+    dst: ~/.config/vifm/vifmrc
+  f_seamus.vifm:
+    src: config/vifm/colors/seamus.vifm
+    dst: ~/.config/vifm/colors/seamus.vifm
+  f_readme:
+    src: config/vifm/scripts/README
+    dst: ~/.config/vifm/scripts/README
+  f_icons:
+    src: config/vifm/icons
+    dst: ~/.config/vifm/icons
 profiles:
   meta-base:
     dotfiles:
@@ -53,7 +53,10 @@ profiles:
     - d_atuin
     - f_gitconfig
     - d_nvim
-    - d_vifm
+    - f_vifmrc
+    - f_icons
+    - f_readme
+    - f_seamus.vifm
   seamus-lxc:
     include:
       - meta-base
