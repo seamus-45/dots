@@ -23,6 +23,17 @@ dotfiles:
   f_gitconfig:
     src: gitconfig
     dst: ~/.gitconfig
+  f_starship.toml:
+    src: config/starship.toml
+    dst: ~/.config/starship.toml
+  d_htop:
+    src: config/htop
+    dst: ~/.config/htop
+    chmod: '700'
+  d_atuin:
+    src: config/atuin
+    dst: ~/.config/atuin
+    chmod: '700'
 profiles:
   seamus-lxc:
     dotfiles:
@@ -31,3 +42,6 @@ profiles:
     - d_neofetch
     - d_zsh
     - f_gitconfig
+    - f_starship.toml
+    - d_htop
+    - d_atuin

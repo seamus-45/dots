@@ -1,11 +1,8 @@
 # dots
-Dotfiles managed by dotdrop
+Dotfiles managed by [dotdrop][1]
 
-```
-## install dotdrop as a submodule
-$ pip3 install --user -r dotdrop/requirements.txt
-$ ./dotdrop/bootstrap.sh
+### Installation
+Refer to the [docs][2]
 
-## use dotdrop
-$ ./dotdrop.sh --help
-```
+[1]: https://dotdrop.readthedocs.io/
+[2]: https://dotdrop.readthedocs.io/en/latest/installation/
