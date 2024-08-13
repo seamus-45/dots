@@ -8,11 +8,11 @@ config:
   link_on_import: nolink
   longkey: false
   impignore:
-    - '*/signmykey'
+  - '*/signmykey'
   upignore:
-    - '*/signmykey'
+  - '*/signmykey'
   cmpignore:
-    - '*/signmykey'
+  - '*/signmykey'
 dotfiles:
   f_zshrc:
     src: zshrc
@@ -57,9 +57,12 @@ dotfiles:
     src: config/tmux
     dst: ~/.config/tmux
     upignore:
-      - "*/plugins/*"
+      - '*/plugins/*'
     cmpignore:
-      - "*/plugins/*"
+      - '*/plugins/*'
+  d_tmuxp:
+    src: config/tmuxp
+    dst: ~/.config/tmuxp
 profiles:
   meta-base:
     dotfiles:
@@ -79,3 +82,4 @@ profiles:
     - d_htop
     - d_local_bin
     - d_gotop
+    - d_tmuxp

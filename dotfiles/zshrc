@@ -216,6 +216,7 @@ alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl" # 
 # Work helpers
 alias ssh="signmykey -e; ssh"
 alias scp="signmykey -e; scp"
+alias tmuxp="signmykey -e; tmuxp"
 alias ansible="signmykey -e; ansible"
 alias ansible-playbook="signmykey -e; ansible-playbook"
 

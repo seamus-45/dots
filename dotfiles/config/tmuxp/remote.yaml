@@ -1,0 +1,21 @@
+---
+session_name: remote
+windows:
+  - window_name: NS
+    panes:
+      - shell_command:
+        - ssh -q ns01.infranet.co
+  - window_name: LE
+    panes:
+      - shell_command:
+        - ssh -q letsencrypt.infranet.co
+  - window_name: CS
+    panes:
+      - shell_command:
+        - ssh -q crowdsec.infranet.co
+  - window_name: Ans
+    start_directory: "~/gitlab/ansible-stable"
+    panes:
+      - shell_command:
+        - source ./activate
+        - cd ../ansible-vm-config
