@@ -200,8 +200,10 @@ alias ip='ip -color'
 
 # Helpers
 alias tb='nc termbin.com 9999'			   # Paste to termbin
-alias jctl="journalctl -p 3 -xb"  		   # Get the error messages from journalctl
-alias helpme="cht.sh --shell"
+alias jctl='journalctl -p 3 -xb'  		   # Get the error messages from journalctl
+alias helpme='cht.sh --shell'
+# Test gotop
+alias htop='gotop'
 
 # Pacman helpers
 alias fixpacman="sudo rm /var/lib/pacman/db.lck"

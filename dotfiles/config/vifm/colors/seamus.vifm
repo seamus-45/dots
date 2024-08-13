@@ -1,5 +1,6 @@
 " seamus theme (based on afterglow)
 " 2024
+" command reference: https://vifm.info/vimdoc.shtml#vifm-%3Ahighlight
 
 " Reset all styles first
 highlight clear

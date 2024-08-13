@@ -7,6 +7,12 @@ config:
   link_dotfile_default: nolink
   link_on_import: nolink
   longkey: false
+  impignore:
+    - '*/signmykey'
+  upignore:
+    - '*/signmykey'
+  cmpignore:
+    - '*/signmykey'
 dotfiles:
   f_zshrc:
     src: zshrc
@@ -17,7 +23,7 @@ dotfiles:
   d_neofetch:
     src: config/neofetch
     dst: ~/.config/neofetch
-  d_zsh:
+  d_local_zsh:
     src: local/share/zsh
     dst: ~/.local/share/zsh
   f_gitconfig:
@@ -38,25 +44,38 @@ dotfiles:
     upignore:
       - '*/vifm-help.txt'
       - '*/vifminfo*'
-    instignore:
-      - '*/vifm-help.txt'
-      - '*/vifminfo*'
     cmpignore:
       - '*/vifm-help.txt'
       - '*/vifminfo*'
+  d_local_bin:
+    src: local/bin
+    dst: ~/.local/bin
+  d_gotop:
+    src: config/gotop
+    dst: ~/.config/gotop
+  d_tmux:
+    src: config/tmux
+    dst: ~/.config/tmux
+    upignore:
+      - "*/plugins/*"
+    cmpignore:
+      - "*/plugins/*"
 profiles:
   meta-base:
     dotfiles:
     - f_zshrc
-    - d_zsh
+    - d_local_zsh
     - f_starship.toml
     - d_atuin
     - f_gitconfig
     - d_nvim
     - d_vifm
+    - d_tmux
   seamus-lxc:
     include:
-      - meta-base
+    - meta-base
     dotfiles:
     - d_neofetch
     - d_htop
+    - d_local_bin
+    - d_gotop
