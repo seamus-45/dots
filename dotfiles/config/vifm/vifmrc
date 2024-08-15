@@ -1,4 +1,4 @@
-" vim: filetype=vifm:foldmethod=marker:foldlevel=0
+" vim: filetype=vim:foldmethod=marker:foldlevel=0
 
 " General settings ------------------------ {{{
 
@@ -106,6 +106,7 @@ mark c ~/.config
 mark b ~/.local/bin/
 mark d ~/downloads
 mark D ~/dotfiles/dotfiles
+mark g ~/gitlab
 mark l /var/log
 
 " }}}
@@ -317,14 +318,28 @@ fileviewer *.pcap,*.pcapng ngrep -I %c
 "
 " Explicitly set highlight type for some extensions
 "
-fileviewer *.[ch],*.[ch]pp highlight -O xterm256 -s dante --syntax c %c
-fileviewer Makefile,Makefile.* highlight -O xterm256 -s dante --syntax make %c
-fileviewer *.sh highlight -O xterm256 -s dante --syntax sh %c
-fileviewer *.json highlight -O xterm256 -s dante --syntax json %c
-fileviewer *.py highlight -O xterm256 -s dante --syntax python %c
-fileviewer *.md highlight -O xterm256 -s dante --syntax md %c
-fileviewer ChangeLog highlight -O xterm256 -s dante --syntax md %c
-fileviewer *.spec highlight -O xterm256 -s dante --syntax spec %c
+fileviewer *.[ch],*.[ch]pp highlight -O xterm256 -s darkness --syntax c %c
+fileviewer *.cmake highlight -O xterm256 -s darkness --syntax cmake %c
+fileviewer *.css highlight -O xterm256 -s darkness --syntax css %c
+fileviewer *.diff highlight -O xterm256 -s darkness --syntax diff %c
+fileviewer *.go highlight -O xterm256 -s darkness --syntax go %c
+fileviewer *.ini,*.desktop highlight -O xterm256 -s darkness --syntax ini %c
+fileviewer *.json highlight -O xterm256 -s darkness --syntax json %c
+fileviewer *.lua highlight -O xterm256 -s darkness --syntax lua %c
+fileviewer *.md highlight -O xterm256 -s darkness --syntax md %c
+fileviewer *.php highlight -O xterm256 -s darkness --syntax php %c
+fileviewer *.pl highlight -O xterm256 -s darkness --syntax perl %c
+fileviewer *.py highlight -O xterm256 -s darkness --syntax python %c
+fileviewer *.rb,Vagrantfile highlight -O xterm256 -s darkness --syntax ruby %c
+fileviewer *.sh highlight -O xterm256 -s darkness --syntax sh %c
+fileviewer *.spec highlight -O xterm256 -s darkness --syntax spec %c
+fileviewer *.txt highlight -O xterm256 -s darkness --syntax txt %c
+fileviewer *.xml highlight -O xterm256 -s darkness --syntax xml %c
+fileviewer *.yaml,*.yml highlight -O xterm256 -s darkness --syntax yaml %c
+fileviewer ChangeLog highlight -O xterm256 -s darkness --syntax md %c
+fileviewer Dockerfile highlight -O xterm256 -s darkness --syntax dockerfile %c
+fileviewer Makefile,Makefile.* highlight -O xterm256 -s darkness --syntax make %c
+fileviewer vim,vimrc,gvimrc highlight -O xterm256 -s darkness --syntax vim %c
 
 "
 " Or leave it for automatic detection

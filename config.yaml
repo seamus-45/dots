@@ -20,6 +20,10 @@ dotfiles:
   d_nvim:
     src: config/nvim
     dst: ~/.config/nvim
+    upignore:
+      - '*/lazy-lock.json'
+    cmpignore:
+      - '*/lazy-lock.json'
   d_neofetch:
     src: config/neofetch
     dst: ~/.config/neofetch
