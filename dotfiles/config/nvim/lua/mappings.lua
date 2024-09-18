@@ -5,6 +5,10 @@ local nomap = vim.keymap.del
 
 -- Unmap some default bindings
 nomap("n", "<C-s>")
+-- Term
+nomap({"n", "t"}, "<A-h>")
+nomap({"n", "t"}, "<A-v>")
+nomap({"n", "t"}, "<A-i>")
 
 map("n", "<F2>", "<cmd>w<cr>", { desc = "File save" })
 map("n", ";", ":", { desc = "CMD enter command mode" })
@@ -47,3 +51,8 @@ end, { desc = "buffer goto next" })
 map("n", "gk", function()
   require("nvchad.tabufline").prev()
 end, { desc = "buffer goto prev" })
+
+-- Term : pos = [sp|vsp|float]
+map({ "n", "t" }, "<A-CR>", function()
+  require("nvchad.term").toggle { pos = "sp", id = "htoddleTerm" }
+end, { desc = "Terminal Toggle Horizontal term" })
