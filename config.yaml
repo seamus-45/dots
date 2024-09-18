@@ -7,12 +7,6 @@ config:
   link_dotfile_default: nolink
   link_on_import: nolink
   longkey: false
-  impignore:
-  - '*/signmykey'
-  upignore:
-  - '*/signmykey'
-  cmpignore:
-  - '*/signmykey'
 dotfiles:
   f_zshrc:
     src: zshrc
@@ -67,10 +61,17 @@ dotfiles:
   d_tmuxp:
     src: config/tmuxp
     dst: ~/.config/tmuxp
+  d_bat:
+    src: config/bat
+    dst: ~/.config/bat
+  d_terminal-colors.d:
+    src: config/terminal-colors.d
+    dst: ~/.config/terminal-colors.d
 profiles:
   meta-base:
     dotfiles:
     - f_zshrc
+    - d_local_bin
     - d_local_zsh
     - f_starship.toml
     - d_atuin
@@ -78,12 +79,13 @@ profiles:
     - d_nvim
     - d_vifm
     - d_tmux
+    - d_bat
+    - d_terminal-colors.d
   seamus-lxc:
     include:
     - meta-base
     dotfiles:
     - d_neofetch
     - d_htop
-    - d_local_bin
     - d_gotop
     - d_tmuxp
