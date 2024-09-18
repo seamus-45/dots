@@ -5,14 +5,14 @@
 local M = {}
 
 M.base46 = {
-	theme = "chadracula",
+  theme = "chadracula",
   transparency = false,
   -- theme_toggle = { "onedark", "one_light" },
 
-	-- hl_override = {
-	-- 	Comment = { italic = true },
-	-- 	["@comment"] = { italic = true },
-	-- },
+  -- hl_override = {
+  --  Comment = { italic = true },
+  --  ["@comment"] = { italic = true },
+  -- },
 }
 
 return M

@@ -1,0 +1,7 @@
+#compdef rexi
+
+_rexi_completion() {
+  eval $(env _TYPER_COMPLETE_ARGS="${words[1,$CURRENT]}" _REXI_COMPLETE=complete_zsh rexi)
+}
+
+compdef _rexi_completion rexi

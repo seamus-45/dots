@@ -236,7 +236,7 @@ filextype *.html,*.htm
         \ {Open with chromium}
         \ chromium-browser %f %i &,
 filetype *.html,*.htm links, lynx
-fileviewer *.html,*.htm lynx -dump %c
+"fileviewer *.html,*.htm lynx -dump %c
 
 " Object
 filetype *.o nm %f | less
@@ -315,31 +315,17 @@ fileviewer *.docx, docx2txt.pl %f -
 fileviewer *.pcap,*.pcapng ngrep -I %c
 
 " Syntax highlighting in preview
-"
-" Explicitly set highlight type for some extensions
-"
-fileviewer *.[ch],*.[ch]pp highlight -O xterm256 -s darkness --syntax c %c
-fileviewer *.cmake highlight -O xterm256 -s darkness --syntax cmake %c
-fileviewer *.css highlight -O xterm256 -s darkness --syntax css %c
-fileviewer *.diff highlight -O xterm256 -s darkness --syntax diff %c
-fileviewer *.go highlight -O xterm256 -s darkness --syntax go %c
-fileviewer *.ini,*.desktop highlight -O xterm256 -s darkness --syntax ini %c
-fileviewer *.json highlight -O xterm256 -s darkness --syntax json %c
-fileviewer *.lua highlight -O xterm256 -s darkness --syntax lua %c
-fileviewer *.md highlight -O xterm256 -s darkness --syntax md %c
-fileviewer *.php highlight -O xterm256 -s darkness --syntax php %c
-fileviewer *.pl highlight -O xterm256 -s darkness --syntax perl %c
-fileviewer *.py highlight -O xterm256 -s darkness --syntax python %c
-fileviewer *.rb,Vagrantfile highlight -O xterm256 -s darkness --syntax ruby %c
-fileviewer *.sh highlight -O xterm256 -s darkness --syntax sh %c
-fileviewer *.spec highlight -O xterm256 -s darkness --syntax spec %c
-fileviewer *.txt highlight -O xterm256 -s darkness --syntax txt %c
-fileviewer *.xml highlight -O xterm256 -s darkness --syntax xml %c
-fileviewer *.yaml,*.yml highlight -O xterm256 -s darkness --syntax yaml %c
-fileviewer ChangeLog highlight -O xterm256 -s darkness --syntax md %c
-fileviewer Dockerfile highlight -O xterm256 -s darkness --syntax dockerfile %c
-fileviewer Makefile,Makefile.* highlight -O xterm256 -s darkness --syntax make %c
-fileviewer vim,vimrc,gvimrc highlight -O xterm256 -s darkness --syntax vim %c
+fileviewer *.[ch],*.[ch]pp  bat --color always --wrap never --pager never %c -p
+fileviewer Makefile,Makefile.*,*.cmake,*.spec  bat --color always --wrap never --pager never %c -p
+fileviewer *.html,*.htm,*.css  bat --color always --wrap never --pager never %c -p
+fileviewer *.diff  bat --color always --wrap never --pager never %c -p
+fileviewer *.go,*.lua,*.php,*.pl,*.py,*.rb,*.sh  bat --color always --wrap never --pager never %c -p
+fileviewer *.ini,*.cfg,*.desktop  bat --color always --wrap never --pager never %c -p
+fileviewer *.j2,*.jinja,*.jinja2  bat --color always --wrap never --pager never %c -p
+fileviewer *.md,*.txt  bat --color always --wrap never --pager never %c -p
+fileviewer *.yaml,*.yml,*.json,*.xml  bat --color always --wrap never --pager never %c -p
+fileviewer Dockerfile,Vagrantfile  bat --color always --wrap never --pager never %c -p
+fileviewer *.vim,vimrc,gvimrc  bat --color always --wrap never --pager never %c -p
 
 "
 " Or leave it for automatic detection
@@ -411,6 +397,7 @@ nnoremap <f5> :copy<cr>
 nnoremap <f6> :move<cr>
 nnoremap <f7> :mkdir<space>
 nnoremap <f8> :delete<cr>
+nnoremap <a-i> :sync!<cr>
 
 " Toggle detailed/brief information about files
 nnoremap <silent> ,i :togglefilesinfo<cr>

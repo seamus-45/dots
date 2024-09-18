@@ -3,6 +3,11 @@
 if [ -d "$HOME/.local/bin" ]; then
     export PATH=$HOME/.local/bin:$PATH
 fi
+#
+# Set $PATH if ~/.local/apps/bin exist
+if [ -d "$HOME/.local/apps/bin" ]; then
+    export PATH=$HOME/.local/apps/bin:$PATH
+fi
 
 # Set path to user defined completions
 if [ -d "$HOME/.local/share/zsh/completions" ]; then
@@ -26,6 +31,8 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # Use fzf
 # CTRL-T - Paste the selected file path(s) into the command line
 # ALT-C - cd into the selected directory
+export FZF_CTRL_T_OPTS="--walker-skip .git,node_modules,target --preview 'bat -n --color=always {}'"
+export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
@@ -167,6 +174,9 @@ if [[ -n "${key[Alt-Right]}" ]]; then
 	bindkey -M vicmd "${key[Alt-Right]}" forward-word
 fi
 
+# Bind custom keycode defined in alacritty (activated on Ctrl+Return) to accept suggestion
+bindkey -M viins "[[CE" autosuggest-accept
+
 ## Useful aliases
 
 # Replace ls with exa
@@ -177,6 +187,11 @@ alias lt='exa -aT --color=always --group-directories-first --icons' # tree listi
 alias lh='exa -ald --color=always --group-directories-first --icons .*' # show only dotfiles
 
 # Common use
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
 alias cp=cpi
 alias cpi='nocorrect cp -i'
 alias mv=mvi
@@ -186,17 +201,26 @@ alias rmi='nocorrect rm -i'
 alias wget='wget -c '
 alias psmem='ps auxf | sort -nr -k 4'
 alias psmem10='ps auxf | sort -nr -k 4 | head -10'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias .....='cd ../../../..'
-alias ......='cd ../../../../..'
+alias pstree='pstree --vt100 -C age --highlight-all'
+alias free='free --mega --human'
 alias grep='ugrep --color=auto'
 alias fgrep='ugrep -F --color=auto'
 alias egrep='ugrep -E --color=auto'
 alias diff='diff --color=auto'
 alias hw='hwinfo --short'                          # Hardware Info
 alias ip='ip -color'
+alias df='df --human-readable'
+
+# Colorized cat and less
+alias cat='bat -pp'
+alias less='bat -p'
+
+# Colorized help
+alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
+
+# Colorized man
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT="-c"
 
 # Helpers
 alias tb='nc termbin.com 9999'			   # Paste to termbin
@@ -219,12 +243,16 @@ alias scp="signmykey -e; scp"
 alias tmuxp="signmykey -e; tmuxp"
 alias ansible="signmykey -e; ansible"
 alias ansible-playbook="signmykey -e; ansible-playbook"
+alias ygrep='ygrep.sh'
 
 # Dotdrop helpers
 export DOTREPO="$HOME/dotfiles"
 export DOTDROP_CONFIG="$HOME/dotfiles/config.yaml"
 alias dotgit="git -C $DOTREPO"
 alias dotsync="dotgit pull && dotgit add -A && dotgit commit && dotgit push; dotdrop install"
+
+# temporary
+alias docker="echo Use podman instead !!!"
 
 # Work vars
 export VAULT_ADDR=https://vault.maxim.services:8200
