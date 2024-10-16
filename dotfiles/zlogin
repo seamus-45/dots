@@ -1,0 +1,12 @@
+#
+# Executes commands at login post-zshrc.
+#
+
+# Autostart X at login on tty1
+[[ $EUID != 0 && -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec xinit -- -nolisten tcp -br +bs -dpi 96 vt$XDG_VTNR
+
+# Autostart fbterm
+if [[ $(tty) =~ /dev/tty ]];
+then
+    fbterm -- /usr/bin/env TERM=fbterm tmux
+fi

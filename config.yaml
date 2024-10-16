@@ -15,9 +15,9 @@ dotfiles:
     src: config/nvim
     dst: ~/.config/nvim
     upignore:
-      - '*/lazy-lock.json'
+    - '*/lazy-lock.json'
     cmpignore:
-      - '*/lazy-lock.json'
+    - '*/lazy-lock.json'
   d_neofetch:
     src: config/neofetch
     dst: ~/.config/neofetch
@@ -40,11 +40,11 @@ dotfiles:
     src: config/vifm
     dst: ~/.config/vifm
     upignore:
-      - '*/vifm-help.txt'
-      - '*/vifminfo*'
+    - '*/vifm-help.txt'
+    - '*/vifminfo*'
     cmpignore:
-      - '*/vifm-help.txt'
-      - '*/vifminfo*'
+    - '*/vifm-help.txt'
+    - '*/vifminfo*'
   d_local_bin:
     src: local/bin
     dst: ~/.local/bin
@@ -55,9 +55,9 @@ dotfiles:
     src: config/tmux
     dst: ~/.config/tmux
     upignore:
-      - '*/plugins/*'
+    - '*/plugins/*'
     cmpignore:
-      - '*/plugins/*'
+    - '*/plugins/*'
   d_tmuxp:
     src: config/tmuxp
     dst: ~/.config/tmuxp
@@ -67,6 +67,9 @@ dotfiles:
   d_terminal-colors.d:
     src: config/terminal-colors.d
     dst: ~/.config/terminal-colors.d
+  f_zlogin:
+    src: zlogin
+    dst: ~/.zlogin
 profiles:
   meta-base:
     dotfiles:
@@ -89,3 +92,8 @@ profiles:
     - d_htop
     - d_gotop
     - d_tmuxp
+  garuda-seamus:
+    include:
+    - meta-base
+    dotfiles:
+    - f_zlogin

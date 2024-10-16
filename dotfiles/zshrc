@@ -1,3 +1,5 @@
+# {{@@ header() @@}}
+
 ## Path section
 # Set $PATH if ~/.local/bin exist
 if [ -d "$HOME/.local/bin" ]; then
@@ -237,25 +239,33 @@ alias mirror="sudo reflector --country Russia --latest 15 --age 8 --fastest 20 -
 alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'   # Cleanup orphaned packages
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl" # Recent installed packages
 
+### Host specific
+
+{%@@ if profile == 'seamus-lxc' @@%}
 # Work helpers
 alias ssh="signmykey -e; ssh"
 alias scp="signmykey -e; scp"
 alias tmuxp="signmykey -e; tmuxp"
 alias ansible="signmykey -e; ansible"
 alias ansible-playbook="signmykey -e; ansible-playbook"
-alias ygrep='ygrep.sh'
+
+# Work vars
+export VAULT_ADDR=https://vault.maxim.services:8200
+{%@@ elif profile == 'garuda-seamus' @@%}
+# Connection helpers
+alias lxcL='ssh -t seamus-lxc tmux -u new-session -A -s lxc-L'
+alias lxcR='ssh -t seamus-lxc tmux -u new-session -A -s lxc-R'
+
+# Garuda-home vars
+export MPD_HOST="/home/seamus/.mpd/socket"
+export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
+{%@@ endif @@%}
 
 # Dotdrop helpers
 export DOTREPO="$HOME/dotfiles"
 export DOTDROP_CONFIG="$HOME/dotfiles/config.yaml"
 alias dotgit="git -C $DOTREPO"
 alias dotsync="dotgit pull && dotgit add -A && dotgit commit && dotgit push; dotdrop install"
-
-# temporary
-alias docker="echo Use podman instead !!!"
-
-# Work vars
-export VAULT_ADDR=https://vault.maxim.services:8200
 
 ## Load Atuin
 # ZVM plugin will auto execute this zvm_after_init function
