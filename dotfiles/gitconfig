@@ -1,10 +1,15 @@
+# {{@@ header() @@}}
 [color]
         diff = auto
         branch = auto
         interactive = auto
         status = auto
 [user]
+{%@@ if profile == 'seamus-lxc' @@%}
         name = Федотов Сергей
+{%@@ else @@%}
+        name = seamus-45
+{%@@ endif @@%}
         email = fedotov_sv@taximaxim.ru
 [push]
         autoSetupRemote = true
