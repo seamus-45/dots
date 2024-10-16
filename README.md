@@ -12,4 +12,5 @@ Refer to the [docs][2]
 git clone git@github.com:seamus-45/dots.git ~/dotfiles
 export DOTREPO="$HOME/dotfiles"
 export DOTDROP_CONFIG="$HOME/dotfiles/config.yaml"
+dotdrop install
 ```
