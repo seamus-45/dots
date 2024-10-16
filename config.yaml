@@ -6,11 +6,13 @@ config:
   keepdot: false
   link_dotfile_default: nolink
   link_on_import: nolink
+  template_dotfile_default: false
   longkey: false
 dotfiles:
   f_zshrc:
     src: zshrc
     dst: ~/.zshrc
+    template: true
   d_nvim:
     src: config/nvim
     dst: ~/.config/nvim
@@ -27,9 +29,11 @@ dotfiles:
   f_gitconfig:
     src: gitconfig
     dst: ~/.gitconfig
+    template: true
   f_starship.toml:
     src: config/starship.toml
     dst: ~/.config/starship.toml
+    template: true
   d_htop:
     src: config/htop
     dst: ~/.config/htop
