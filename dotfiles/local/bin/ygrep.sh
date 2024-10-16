@@ -27,7 +27,7 @@ fi
 
 if [ "$NAMES" = true ];
 then
-    find $2 -regex '.*\.ya?ml' -exec grep --color=always -l $1 {} \; -exec sed -n "/$1/,/^$/p" {} \;
+    find $2 -regex '.*\.ya?ml' -exec grep --color=auto -l $1 {} \; -exec sed -n "/$1/,/^$/p" {} \;
 else
     find $2 -regex '.*\.ya?ml' -exec sed -n "/$1/,/^$/p" {} \;
 fi
