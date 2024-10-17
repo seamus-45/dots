@@ -182,11 +182,11 @@ bindkey -M viins "[[CE" autosuggest-accept
 ## Useful aliases
 
 # Replace ls with exa
-alias ls='exa --color=always --group-directories-first --icons' # preferred listing
-alias la='exa -a --color=always --group-directories-first --icons'  # all files and dirs
-alias ll='exa -l -g --color=always --group-directories-first --icons'  # long format
-alias lt='exa -aT --color=always --group-directories-first --icons' # tree listing
-alias lh='exa -ald --color=always --group-directories-first --icons .*' # show only dotfiles
+alias ls='exa --color=always --no-quotes --group-directories-first --icons' # preferred listing
+alias la='exa -a --color=always --no-quotes --group-directories-first --icons'  # all files and dirs
+alias ll='exa -l -g --color=always --no-quotes --group-directories-first --icons'  # long format
+alias lt='exa -aT --color=always --no-quotes --group-directories-first --icons' # tree listing
+alias lh='exa -ald --color=always --no-quotes --group-directories-first --icons .*' # show only dotfiles
 
 # Common use
 alias ..='cd ..'
