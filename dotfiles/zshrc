@@ -3,12 +3,12 @@
 ## Path section
 # Set $PATH if ~/.local/bin exist
 if [ -d "$HOME/.local/bin" ]; then
-    export PATH=$HOME/.local/bin:$PATH
+    [[ "$PATH" =~ ".local/bin" ]] || export PATH=$HOME/.local/bin:$PATH
 fi
 #
 # Set $PATH if ~/.local/apps/bin exist
 if [ -d "$HOME/.local/apps/bin" ]; then
-    export PATH=$HOME/.local/apps/bin:$PATH
+    [[ "$PATH" =~ ".local/apps/bin" ]] || export PATH=$HOME/.local/apps/bin:$PATH
 fi
 
 # Set path to user defined completions
