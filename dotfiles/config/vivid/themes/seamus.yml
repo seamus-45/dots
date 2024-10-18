@@ -1,3 +1,5 @@
+# based on molokai
+
 colors:
   # Theme colors
   background_color: '1a1a1a'
@@ -5,6 +7,8 @@ colors:
   khaki: "e6db74"
   pink: "f92672"
   cyan: "66d9ef"
+  cyan2: "60ef89"
+  blue: "60aeef"
   green: "a6e22e"
   orange: "fd971f"
 
@@ -28,15 +32,18 @@ core:
     foreground: cyan
 
   symlink:
-    foreground: cyan
+    foreground: cyan2
+    font-style: bold
 
   multi_hard_link: {}
 
   fifo:
     foreground: purple
+    font-style: bold
 
   socket:
     foreground: purple
+    font-style: bold
 
   door:
     foreground: black
@@ -102,6 +109,8 @@ programming:
 
 media:
   foreground: orange
+  image:
+    foreground: blue
 
 office:
   foreground: khaki
