@@ -555,6 +555,7 @@ unimportant:
     - "~"
     - .bak
     - .ctags
+    - .dotdropbak
     - .git  # only works for '.git' files (submodules)
     - .lock
     - .log
