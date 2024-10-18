@@ -3,12 +3,12 @@
 ## Path section
 # Set $PATH if ~/.local/bin exist
 if [ -d "$HOME/.local/bin" ]; then
-    [[ "$PATH" =~ ".local/bin" ]] || export PATH=$HOME/.local/bin:$PATH
+    [[ "$PATH" =~ "\.local/bin" ]] || export PATH=$HOME/.local/bin:$PATH
 fi
 #
 # Set $PATH if ~/.local/apps/bin exist
 if [ -d "$HOME/.local/apps/bin" ]; then
-    [[ "$PATH" =~ ".local/apps/bin" ]] || export PATH=$HOME/.local/apps/bin:$PATH
+    [[ "$PATH" =~ "\.local/apps/bin" ]] || export PATH=$HOME/.local/apps/bin:$PATH
 fi
 
 # Set path to user defined completions
@@ -266,6 +266,9 @@ export DOTREPO="$HOME/dotfiles"
 export DOTDROP_CONFIG="$HOME/dotfiles/config.yaml"
 alias dotgit="git -C $DOTREPO"
 alias dotsync="dotgit pull && dotgit add -A && dotgit commit && dotgit push; dotdrop install"
+
+# Generate ls colors
+export LS_COLORS="$(vivid generate seamus)"
 
 ## Load Atuin
 # ZVM plugin will auto execute this zvm_after_init function

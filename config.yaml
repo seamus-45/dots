@@ -74,6 +74,9 @@ dotfiles:
   f_zlogin:
     src: zlogin
     dst: ~/.zlogin
+  d_vivid:
+    src: config/vivid
+    dst: ~/.config/vivid
 profiles:
   meta-base:
     dotfiles:
@@ -88,6 +91,7 @@ profiles:
     - d_tmux
     - d_bat
     - d_terminal-colors.d
+    - d_vivid
   seamus-lxc:
     include:
     - meta-base
