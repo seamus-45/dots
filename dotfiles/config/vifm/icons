@@ -10,19 +10,22 @@ set classify=' :dir:/, :exe:, :reg:, :link:,? :?:, ::../::'
 " Dirs
 set classify+=' ::.git/::/,
              \  ::.config/::/,
+             \  ::Archive/::/,
              \  ::Desktop/::/,
              \  ::Documents/::/,
-             \  ::Development/::/,
+             \  ::Development/,,Devel/::/,
              \  ::Downloads/::/,
              \  ::Dropbox/::/,
              \  ::Google\ Drive/::/,
-             \  ::gitrepos/::/,
+             \  ::gitrepos/,,gitlab/::/,
              \  ::Music/::/,
              \  ::Pictures/::/,
              \  ::Public/::/,
+             \ 󱀩 ::_reports/::/,
              \  ::Templates/::/,
              \  ::Videos/::/,
-             \  ::node_modules/::/'
+             \  ::node_modules/::/,
+             \  ::Trash/,,tmp/::/'
 
 " Files
 set classify+=' ::.Xauthority,,.Xdefaults,,.Xresources,,.bash_aliases,,.bashprofile,,.bash_profile,,.bash_logout,,.bash_history,,.bashrc,,.dmrc,,.DS_Store,,.fasd,,.gitconfig,,.gitattributes,,.gitignore,,.inputrc,,.jack-settings,,.mime.types,,.nvidia-settings-rc,,.pam_environment,,.profile,,.recently-used,,.selected_editor,,.tmux.conf,,.xinitrc,,.xinputrc,,config,,bspwmrc,,sxhkdrc,,mimeapps.list,,.zshenv,,.zprofile,,.zshrc,,.zlogin,,.zlogout,,vifmrc,,yabairc,,skhdrc,,ini,,user-dirs.dirs::,
