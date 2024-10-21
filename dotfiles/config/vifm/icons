@@ -5,11 +5,11 @@
 " NOTE: I combined multiple `set classify` commands for avoiding sluggish startup.
 
 " Filetypes
-set classify=' :dir:/, :exe:, :reg:, :link:,? :?:, ::../::'
+set classify=' :dir:/, :exe:, :reg:, :link:,? :?:, ::../::'
 
 " Dirs
 set classify+=' ::.git/::/,
-             \  ::.config/::/,
+             \  ::.config/::/,
              \  ::Desktop/::/,
              \  ::Documents/::/,
              \  ::Development/::/,
@@ -25,7 +25,7 @@ set classify+=' ::.git/::/,
              \  ::node_modules/::/'
 
 " Files
-set classify+=' ::.Xauthority,,.Xdefaults,,.Xresources,,.bash_aliases,,.bashprofile,,.bash_profile,,.bash_logout,,.bash_history,,.bashrc,,.dmrc,,.DS_Store,,.fasd,,.gitconfig,,.gitattributes,,.gitignore,,.inputrc,,.jack-settings,,.mime.types,,.nvidia-settings-rc,,.pam_environment,,.profile,,.recently-used,,.selected_editor,,.tmux.conf,,.xinitrc,,.xinputrc,,config,,bspwmrc,,sxhkdrc,,Makefile,,Makefile.in,,Makefile.ac,,mimeapps.list,,.zshenv,,.zprofile,,.zshrc,,.zlogin,,.zlogout,,vifmrc,,yabairc,,skhdrc,,ini,,user-dirs.dirs::,
+set classify+=' ::.Xauthority,,.Xdefaults,,.Xresources,,.bash_aliases,,.bashprofile,,.bash_profile,,.bash_logout,,.bash_history,,.bashrc,,.dmrc,,.DS_Store,,.fasd,,.gitconfig,,.gitattributes,,.gitignore,,.inputrc,,.jack-settings,,.mime.types,,.nvidia-settings-rc,,.pam_environment,,.profile,,.recently-used,,.selected_editor,,.tmux.conf,,.xinitrc,,.xinputrc,,config,,bspwmrc,,sxhkdrc,,mimeapps.list,,.zshenv,,.zprofile,,.zshrc,,.zlogin,,.zlogout,,vifmrc,,yabairc,,skhdrc,,ini,,user-dirs.dirs::,
              \  ::.fehbg::,
              \  ::.vim,,.vimrc,,.viminfo,,init.vim::,
              \  ::Dockerfile,,docker-compose.yml::,
@@ -42,18 +42,20 @@ set classify+=' ::.Xauthority,,.Xdefaults,,.Xresources,,.bash_aliases,,.bashp
              \  ::known_hosts,,authorized_keys,,license,,LICENSE.md,,LICENSE,,LICENSE.txt::,
              \  ::procfile::,
              \  ::react.jsx::,
-             \  ::README.rst,,README.md,,README.markdown,,README,,README.txt::'
+             \  ::README.rst,,README,,README.txt::'
 
 " Extentions
-set classify+=' ::*.7z,,*.apk,,*.bz2,,*.cpio,,*.deb,,*.gz,,*.gzip,,*.gem,,*.lha,,*.lzh,,*.lzma,,*.rar,,*.rpm,,*.tar,,*.tgz,,*.xbps,,*.xz,,*.zip::,
-             \  ::*.a,,*.cmake,,*.jl,,*.o,,*.so::,
+set classify+=' ::*.7z,,*.apk,,*.bz2,,*.cpio,,*.deb,,*.gz,,*.gzip,,*.gem,,*.lha,,*.lzh,,*.lzma,,*.rar,,*.rpm,,*.tar,,*.tgz,,*.xbps,,*.xz,,*.zip::,
+             \  ::*.a,,*.jl,,*.o,,*.so::,
+             \  ::*.cmake,,Makefile,,Makefile.in,,Makefile.ac::,
              \  ::*.ai::,
-             \  ::*.asm,,*.css,,*.less,,*.s,,*.sh,,*.zsh::,
-             \  ::*.asp,,*.rom,,*.efi,,*.elf,,*.fish::,
+             \  ::*.asm,,*.css,,*.less,,*.s::,
+             \  ::*.bat,,*.sh,,*.zsh,,*.asp,,*.rom,,*.efi,,*.elf,,*.fish::,
              \  ::*.aup,,*.cue,,*.flac,,*.m4a,,*.mp3,,*.ogg,,*.wav::,
-             \  ::*.avi,,*.flv,,*.m4v,,*.mkv,,*.mov,,*.mp4,,*.mpeg,,*.mpg,,*.webm::,
-             \  ::*.bat,,*.conf,,*.cvs,,*.htaccess,,*.htpasswd,,*.ini,,*.rc,,*.yaml,,*.yml::,
-             \  ::*.bmp,,*.gif,,*.ico,,*.jpeg,,*.jpg,,*.png,,*.ppt,,*.pptx::,
+             \  ::*.avi,,*.flv,,*.m4v,,*.mkv,,*.mov,,*.mp4,,*.mpeg,,*.mpg,,*.webm::,
+             \  ::*.conf,,*.cvs,,*.htaccess,,*.htpasswd,,*.ini,,*.rc::,
+             \  ::*.yaml,,*.yml::,
+             \  ::*.bmp,,*.gif,,*.ico,,*.jpeg,,*.jpg,,*.png,,*.ppt,,*.pptx::,
              \  ::*.c,,*.h::,
              \  ::*.cbr,,*.cbz::,
              \  ::*.class,,*.jar,,*.java::,
@@ -64,11 +66,15 @@ set classify+=' ::*.7z,,*.apk,,*.bz2,,*.cpio,,*.deb,,*.gz,,*.gzip,,*.gem,,*.l
              \  ::*.cxx,,*.c++,,*.cc,,*.cp,,*.cpp::,
              \  ::*.d::,
              \  ::*.dart::,
-             \  ::*.db,,*.dump,,*.img,,*.iso,,*.sql::,
-             \  ::*.diff::,
-             \  ::*.dll,,*.exe,,*.msi::,
-             \  ::*.doc,,*.docx,,*.epub,,*.pdf,,*.rtf,,*.xls,,*.xlsx::,
-             \  ::*.ejs,,*.htm,,*.html,,*.slim,,*.xhtml,,*.xml::,
+             \  ::*.db,,*.dump,,*.sql::,
+             \  ::*.img,,*.iso::,
+             \  ::*.diff::,
+             \  ::*.dll,,*.exe,,*.msi::,
+             \  ::*.doc,,*.docx,,*.rtf,,*.xls,,*.xlsx::,
+             \  ::*.pdf::,
+             \  ::*.epub,,*.fb2,,*.djvu,,*.mobi,,*.azw,,*.azw3::,
+             \ 󰗀 ::*.ejs,,*.slim,,*.xml::,
+             \  ::*.htm,,*.html,,*.xhtml,,*.mhtml::,
              \  ::*.elm::,
              \  ::*.erl,,*.hrl::,
              \  ::*.ex,,*.exs,,*.eex::,
@@ -80,10 +86,10 @@ set classify+=' ::*.7z,,*.apk,,*.bz2,,*.cpio,,*.deb,,*.gz,,*.gzip,,*.gem,,*.l
              \  ::*.js::,
              \  ::*.json::,
              \  ::*.jsx::,
-             \  ::*.key,,*.pub::,
-             \  ::*.log::,
+             \  ::*.key,,*.pub,,*.pem::,
+             \  ::*.log::,
              \  ::*.lua::,
-             \  ::*.markdown,,*.md::,
+             \  ::*.markdown,,*.md::,
              \ λ ::*.ml,,*.mli::,
              \  ::*.php::,
              \  ::*.pl,,*.pm,,*.t::,
