@@ -80,6 +80,11 @@ dotfiles:
   f_roficlip_persistent.db:
     src: local/share/roficlip/persistent.db
     dst: ~/.local/share/roficlip/persistent.db
+  d_roficlip:
+    src: config/roficlip
+    dst: ~/.config/roficlip
+    actions:
+      - pull_roficlip
 profiles:
   meta-base:
     dotfiles:
@@ -109,3 +114,12 @@ profiles:
     dotfiles:
     - f_zlogin
     - f_roficlip_persistent.db
+    - d_roficlip
+variables:
+  apps_bin: "${{HOME}}/.local/apps/bin"
+  git_installed: (test -x /usr/bin/git)
+  roficlip_path: "${{HOME}}/.local/apps/roficlip/"
+  roficlip_url: "https://github.com/seamus-45/roficlip.git"
+  roficlip_ne: (test ! -d "{{@@ roficlip_path @@}}")
+actions:
+  pull_roficlip: "{{@@ git_installed @@}} && {{@@ roficlip_ne @@}} && (mkdir -p {{@@ apps_bin @@}}; git clone {{@@ roficlip_url @@}} {{@@ roficlip_path @@}}; ln -s ../roficlip/roficlip.py {{@@ apps_bin @@}}) ||:"
