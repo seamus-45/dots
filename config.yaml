@@ -77,6 +77,9 @@ dotfiles:
   d_vivid:
     src: config/vivid
     dst: ~/.config/vivid
+  f_roficlip_persistent.db:
+    src: local/share/roficlip/persistent.db
+    dst: ~/.local/share/roficlip/persistent.db
 profiles:
   meta-base:
     dotfiles:
@@ -105,3 +108,4 @@ profiles:
     - meta-base
     dotfiles:
     - f_zlogin
+    - f_roficlip_persistent.db

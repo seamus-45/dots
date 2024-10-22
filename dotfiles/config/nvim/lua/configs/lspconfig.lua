@@ -5,7 +5,17 @@ local lspconfig = require "lspconfig"
 local configs = require "nvchad.configs.lspconfig"
 
 local servers = {
-  pylsp = {},
+  pylsp = {
+    settings = {
+      pylsp = {
+        plugins = {
+          pycodestyle = {
+            maxLineLength = 120,
+          }
+        }
+      }
+    }
+  },
   ansiblels = {},
   bashls = {},
   yamlls = {},
