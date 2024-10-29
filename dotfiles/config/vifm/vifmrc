@@ -247,12 +247,14 @@ fileviewer *.[1-8] man ./%c | col -b
 
 " Images
 filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
-        \ {View in qView}
-        \ qview %c,
+        \ {View in feh}
+        \ feh --fullscreen --scale-down --start-at  %c,
         \ {View in sxiv}
-        \ sxiv,
+        \ sxiv %f,
+        \ {Animate in sxiv}
+        \ sxiv -a %f,
 fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
-         \ convert -identify %f -verbose /dev/null
+         \ identify %f -verbose /dev/null
 
 " Mindmap
 filextype *.vym
@@ -330,7 +332,6 @@ fileviewer *.vim,vimrc,gvimrc  bat --color always --wrap never --pager never %c 
 "
 " Or leave it for automatic detection
 "
-" fileviewer *[^/] pygmentize -O style=monokai -f console256 -g
 
 " }}}
 

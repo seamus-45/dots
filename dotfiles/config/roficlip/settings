@@ -1,11 +1,13 @@
 settings:
   ring_size: 20
-  newline_char: ''
+  newline_char: ''
   notify: True
   notify_timeout: 2
   show_comments_first: True
+  colored_comments: True
 
 actions:
-  'Add to persistent': 'roficlip.py -q --add'
-  'Del from persistent': 'roficlip.py -q --remove'
-  'Open url with mpv to play': 'mpv %s'
+  ' Save in persistent': 'roficlip.py --add'
+  ' Remove from persistent': 'roficlip.py --remove'
+  '󰑌 Clear clipboard': 'roficlip.py --clear'
+  ' Open url with mpv to play': 'mpv %s'

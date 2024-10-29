@@ -11,6 +11,7 @@ nomap({"n", "t"}, "<A-v>")
 nomap({"n", "t"}, "<A-i>")
 
 map("n", "<F2>", "<cmd>w<cr>", { desc = "File save" })
+map("i", "<F2>", "<cmd>w<cr>", { desc = "File save" })
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("n", "<leader>i", "<cmd>IBLToggle<cr>", { desc = "Toggle ident lines" })
 map("n", "<leader>l", "<cmd>set list!<cr>", { desc = "Toggle list mode" })
