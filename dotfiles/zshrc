@@ -262,8 +262,8 @@ export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
 {%@@ endif @@%}
 
 # Dotdrop helpers
-export DOTREPO="$HOME/dotfiles"
-export DOTDROP_CONFIG="$HOME/dotfiles/config.yaml"
+export DOTREPO="$HOME/.dotfiles"
+export DOTDROP_CONFIG="$DOTREPO/config.yaml"
 alias dotgit="git -C $DOTREPO"
 alias dotsync="dotgit pull && dotgit add -A && dotgit commit && dotgit push; dotdrop install"
 
