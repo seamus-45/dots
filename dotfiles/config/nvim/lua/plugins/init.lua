@@ -22,7 +22,9 @@ return {
     dependencies = "nvim-lua/plenary.nvim",
     config = true,
   },
-  { "nvchad/minty",
+
+  {
+    "nvchad/minty",
     cmd = {"Shades", "Huefy"},
   },
 }

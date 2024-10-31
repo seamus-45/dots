@@ -6,9 +6,9 @@ local nomap = vim.keymap.del
 -- Unmap some default bindings
 nomap("n", "<C-s>")
 -- Term
-nomap({"n", "t"}, "<A-h>")
-nomap({"n", "t"}, "<A-v>")
-nomap({"n", "t"}, "<A-i>")
+nomap({"n", "t"}, "<m-h>")
+nomap({"n", "t"}, "<m-v>")
+nomap({"n", "t"}, "<m-i>")
 
 map("n", "<F2>", "<cmd>w<cr>", { desc = "File save" })
 map("i", "<F2>", "<cmd>w<cr>", { desc = "File save" })
@@ -27,6 +27,10 @@ map("i", "<m-l>", "<c-o>l", { desc = "SmartMove Goto forward" })
 map("i", "<m-h>", "<c-o>h", { desc = "SmartMove Goto backward" })
 map("i", "<m-H>", "<c-o>I", { desc = "SmartMove Goto begin" })
 map("i", "<m-L>", "<c-o>A", { desc = "SmartMove Goto end" })
+map("n", "<m-h>", "<cmd>NvimTmuxNavigateLeft<cr>", { desc = "Tmux Navigate Left" })
+map("n", "<m-j>", "<cmd>NvimTmuxNavigateDown<cr>", { desc = "Tmux Navigate Down" })
+map("n", "<m-k>", "<cmd>NvimTmuxNavigateUp<cr>", { desc = "Tmux Navigate Up" })
+map("n", "<m-l>", "<cmd>NvimTmuxNavigateRight<cr>", { desc = "Tmux Navigate Right" })
 
 -- NvCheatsheet
 map("n", "<F1>", "<cmd>NvCheatsheet<cr>")
