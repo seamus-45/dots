@@ -27,4 +27,18 @@ return {
     "nvchad/minty",
     cmd = {"Shades", "Huefy"},
   },
+  {
+    "OXY2DEV/markview.nvim",
+    -- Recommended:
+    --lazy = false,
+    -- If you decide to lazy-load anyway
+    ft = "markdown",
+    dependencies = {
+        "nvim-treesitter/nvim-treesitter",
+        "nvim-tree/nvim-web-devicons"
+    },
+    config = function ()
+      require("markview").setup()
+    end,
+  },
 }
