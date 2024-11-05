@@ -25,6 +25,11 @@ return {
   {
     "OXY2DEV/markview.nvim",
     ft = "markdown",
+    config = true,
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
+    },
   },
 
   {
@@ -37,5 +42,10 @@ return {
       },
     },
     keys = { "ga", "gA" },
+  },
+
+  {
+    "HiPhish/jinja.vim",
+    ft = {"jinja","*.jinja"}
   },
 }
