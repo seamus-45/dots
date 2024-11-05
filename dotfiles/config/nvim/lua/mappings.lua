@@ -10,14 +10,14 @@ nomap({"n", "t"}, "<m-h>")
 nomap({"n", "t"}, "<m-v>")
 nomap({"n", "t"}, "<m-i>")
 
+map("n", ";", ":", { desc = "CMD enter command mode" })
 map("n", "<F2>", "<cmd>w<cr>", { desc = "File save" })
 map("i", "<F2>", "<cmd>w<cr>", { desc = "File save" })
-map("n", ";", ":", { desc = "CMD enter command mode" })
 map("n", "<leader>i", "<cmd>IBLToggle<cr>", { desc = "Toggle ident lines" })
 map("n", "<leader>l", "<cmd>set list!<cr>", { desc = "Toggle list mode" })
 map("n", "<leader>p", "<cmd>set paste!<cr>", { desc = "Toggle paste mode" })
 map("n", "<F9>", "mzggg?G`z", { desc = "Toggle panic mode" })
-map("n", "<F12>", "<cmd>e ++enc=cp1251<cr>", { desc = "Encoding change encoding to 1251" })
+map("n", "<leader>ew", "<cmd>e ++enc=cp1251<cr>", { desc = "Encoding change encoding to 1251" })
 map("v", "<", "<gv", { desc = "Ident block left" })
 map("v", ">", ">gv", { desc = "Ident block right" })
 map("n", "H", "^", { desc = "SmartMove Goto begin" })
@@ -35,7 +35,7 @@ map("n", "<m-l>", "<cmd>NvimTmuxNavigateRight<cr>", { desc = "Tmux Navigate Righ
 -- NvCheatsheet
 map("n", "<F1>", "<cmd>NvCheatsheet<cr>")
 
--- Nvim-Cmp
+-- Nvim-Cmp navigation
 map("i", "<C-j>", function()
   require("cmp").select_next_item()
 end)
@@ -44,7 +44,7 @@ map("i", "<C-k>", function()
 end)
 
 -- UndoTree
-map("n", "<F4>", function()
+map("n", "<leader><backspace>", function()
   require("undotree").toggle()
 end, { desc = "Toggle UndoTree"})
 
@@ -58,6 +58,32 @@ map("n", "gk", function()
 end, { desc = "buffer goto prev" })
 
 -- Term : pos = [sp|vsp|float]
-map({ "n", "t" }, "<A-CR>", function()
+map({ "n", "t" }, "<m-CR>", function()
   require("nvchad.term").toggle { pos = "sp", id = "htoddleTerm" }
-end, { desc = "Terminal Toggle Horizontal term" })
+end, { desc = "Toggle Horizontal Term" })
+
+-- Open color picker
+map("n", "<leader>cp", function()
+  require("plenary.reload").reload_module "minty.huefy"
+  require("minty.huefy").open()
+end, { desc = "Toggler color picker (huefy)" })
+--
+-- Open color picker
+map("n", "<leader>cP", function()
+  require("plenary.reload").reload_module "minty.shades"
+  require("minty.shades").open()
+end, { desc = "Toggler color picker (shades)" })
+
+-- Open menu with keyboard
+vim.keymap.set("n", "<leader>m", function()
+  local options = vim.bo.ft == "NvimTree" and "nvimtree" or "default"
+  require("menu").open(options)
+end, {})
+
+-- Open menu with mouse
+vim.keymap.set("n", "<RightMouse>", function()
+  vim.cmd.exec '"normal! \\<RightMouse>"'
+
+  local options = vim.bo.ft == "NvimTree" and "nvimtree" or "default"
+  require("menu").open(options, { mouse = true })
+end, {})

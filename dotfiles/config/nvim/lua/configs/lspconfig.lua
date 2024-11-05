@@ -20,6 +20,7 @@ local servers = {
   bashls = {},
   yamlls = {},
   jinja_lsp = {},
+  cssls = {}
 }
 
 for name, opts in pairs(servers) do
