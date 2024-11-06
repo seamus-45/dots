@@ -4,7 +4,7 @@ require "nvchad.options"
 
 local o = vim.o
 
-o.cursorlineopt = 'both' -- to enable cursorline!
+o.cursorlineopt = "both" -- to enable cursorline!
 
 -- style for non printable symbols
 o.listchars = "tab:▸ ,eol:¬,extends:❯,precedes:❮" -- TextMate style
