@@ -12,8 +12,8 @@ local autocmd = vim.api.nvim_create_autocmd -- Create autocommand
 -- Highlight on yank
 augroup("YankHighlight", { clear = true })
 autocmd("TextYankPost", {
-  group = "YankHighlight",
   desc = "Hightlight selection on yank",
+  group = "YankHighlight",
   callback = function()
     vim.highlight.on_yank { higroup = "Visual", timeout = "500" }
   end,
@@ -24,4 +24,20 @@ autocmd("BufEnter", {
   desc = "Disable auto commenting on new line",
   pattern = "",
   command = "set fo-=c fo-=r fo-=o",
+})
+
+autocmd("BufReadPost", {
+  desc = "Restore cursor position on file open",
+  pattern = "*",
+  callback = function()
+    local line = vim.fn.line "'\""
+    if
+      line > 1
+      and line <= vim.fn.line "$"
+      and vim.bo.filetype ~= "commit"
+      and vim.fn.index({ "xxd", "gitrebase" }, vim.bo.filetype) == -1
+    then
+      vim.cmd 'normal! g`"'
+    end
+  end,
 })
