@@ -115,6 +115,7 @@ profiles:
     include:
     - meta-base
     dotfiles:
+    - f_zlogin
     - f_roficlip_persistent.db
     - d_roficlip
 variables:
