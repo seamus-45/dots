@@ -244,6 +244,16 @@ export DOTDROP_CONFIG="$DOTREPO/config.yaml"
 alias dotgit="git -C $DOTREPO"
 alias dotsync="dotgit pull && dotgit add -A && dotgit commit && dotgit push; dotdrop install"
 
+# Functions
+copy2cb() {
+	if [ -z "$SSH_CLIENT" ]; then
+    xclip -selection clipboard
+	else
+    # OSC52 terminal sequence
+    base64 | xargs printf $'\e]52;c;%s\a'
+	fi
+}
+
 # Source host specific settigns
 [[ -f $ZCONFDIR/profile.d/$HOST.zsh ]] && source $ZCONFDIR/profile.d/$HOST.zsh
 

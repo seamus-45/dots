@@ -25,10 +25,6 @@ dotfiles:
   d_zsh:
     src: config/zsh
     dst: ~/.config/zsh
-    upignore:
-    - '*/zshrc.d'
-    cmpignore:
-    - '*/zshrc.d'
   f_gitconfig:
     src: gitconfig
     dst: ~/.gitconfig
