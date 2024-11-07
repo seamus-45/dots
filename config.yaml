@@ -12,7 +12,6 @@ dotfiles:
   f_zshrc:
     src: zshrc
     dst: ~/.zshrc
-    template: true
   d_nvim:
     src: config/nvim
     dst: ~/.config/nvim
@@ -23,9 +22,13 @@ dotfiles:
   d_neofetch:
     src: config/neofetch
     dst: ~/.config/neofetch
-  d_local_zsh:
-    src: local/share/zsh
-    dst: ~/.local/share/zsh
+  d_zsh:
+    src: config/zsh
+    dst: ~/.config/zsh
+    upignore:
+    - '*/zshrc.d'
+    cmpignore:
+    - '*/zshrc.d'
   f_gitconfig:
     src: gitconfig
     dst: ~/.gitconfig
@@ -89,8 +92,8 @@ profiles:
   meta-base:
     dotfiles:
     - f_zshrc
+    - d_zsh
     - d_local_bin
-    - d_local_zsh
     - f_starship.toml
     - d_atuin
     - f_gitconfig
@@ -112,7 +115,6 @@ profiles:
     include:
     - meta-base
     dotfiles:
-    - f_zlogin
     - f_roficlip_persistent.db
     - d_roficlip
 variables:

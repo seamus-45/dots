@@ -1,4 +1,5 @@
-# {{@@ header() @@}}
+## Zsh extra config dir
+export ZCONFDIR="$HOME/.config/zsh"
 
 ## Path section
 # Set $PATH if ~/.local/bin exist
@@ -12,8 +13,8 @@ if [ -d "$HOME/.local/apps/bin" ]; then
 fi
 
 # Set path to user defined completions
-if [ -d "$HOME/.local/share/zsh/completions" ]; then
-  fpath=($HOME/.local/share/zsh/completions $fpath)
+if [ -d "$ZCONFDIR/completions" ]; then
+  fpath=($ZCONFDIR/completions $fpath)
 fi
 
 eval "$(starship init zsh)"
@@ -237,34 +238,14 @@ alias mirror="sudo reflector --country Russia --latest 15 --age 8 --fastest 20 -
 alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'   # Cleanup orphaned packages
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl" # Recent installed packages
 
-### Host specific
-
-{%@@ if profile == 'seamus-lxc' @@%}
-# Work helpers
-alias ssh="signmykey -e; ssh"
-alias scp="signmykey -e; scp"
-alias tmuxp="signmykey -e; tmuxp"
-alias ansible="signmykey -e; ansible"
-alias ansible-playbook="signmykey -e; ansible-playbook"
-alias htop='gotop'
-
-# Work vars
-export VAULT_ADDR=https://vault.maxim.services:8200
-{%@@ elif profile == 'garuda-seamus' @@%}
-# Connection helpers
-alias lxcL='ssh -t seamus-lxc tmux -u new-session -A -s lxc-L'
-alias lxcR='ssh -t seamus-lxc tmux -u new-session -A -s lxc-R'
-
-# Garuda-home vars
-export MPD_HOST="/home/seamus/.mpd/socket"
-export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
-{%@@ endif @@%}
-
 # Dotdrop helpers
 export DOTREPO="$HOME/.dotdrop"
 export DOTDROP_CONFIG="$DOTREPO/config.yaml"
 alias dotgit="git -C $DOTREPO"
 alias dotsync="dotgit pull && dotgit add -A && dotgit commit && dotgit push; dotdrop install"
+
+# Source host specific settigns
+[[ -f $ZCONFDIR/profile.d/$HOST.zsh ]] && source $ZCONFDIR/profile.d/$HOST.zsh
 
 # Generate ls colors
 export LS_COLORS="$(vivid generate seamus)"
@@ -277,7 +258,7 @@ function zvm_after_init() {
 }
 
 # Load up-arrow hack for atuin
-source $HOME/.local/share/zsh/scripts/02_atuin-history-arrow.zsh
+source $ZCONFDIR/scripts/02_atuin-history-arrow.zsh
 
 ## Run neofetch
 # neofetch
