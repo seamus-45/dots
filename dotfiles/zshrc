@@ -53,7 +53,7 @@ source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 ## Options section
 setopt correct                                                  # Auto correct mistakes
 #setopt extendedglob                                             # Extended globbing. Allows using regular expressions with *
-setopt interactivecomments					# Allow comments in command buffer
+setopt interactivecomments                                      # Allow comments in command buffer
 setopt nocaseglob                                               # Case insensitive globbing
 setopt rcexpandparam                                            # Array expension with parameters
 setopt nocheckjobs                                              # Don't warn about running processes when exiting
@@ -138,43 +138,43 @@ fi
 
 typeset -g -A key
 if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
-	autoload -Uz add-zle-hook-widget
-	function zle_application_mode_start { echoti smkx }
-	function zle_application_mode_stop { echoti rmkx }
-	add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
-	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
+  autoload -Uz add-zle-hook-widget
+  function zle_application_mode_start { echoti smkx }
+  function zle_application_mode_stop { echoti rmkx }
+  add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
+  add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
 fi
 
 # Control Left - go back a word
 key[Control-Left]="${terminfo[kLFT5]}"
 if [[ -n "${key[Control-Left]}"  ]]; then
-	bindkey -M emacs "${key[Control-Left]}"  backward-word
-	bindkey -M viins "${key[Control-Left]}"  backward-word
-	bindkey -M vicmd "${key[Control-Left]}"  backward-word
+  bindkey -M emacs "${key[Control-Left]}"  backward-word
+  bindkey -M viins "${key[Control-Left]}"  backward-word
+  bindkey -M vicmd "${key[Control-Left]}"  backward-word
 fi
 
 # Control Left - go forward a word
 key[Control-Right]="${terminfo[kRIT5]}"
 if [[ -n "${key[Control-Right]}" ]]; then
-	bindkey -M emacs "${key[Control-Right]}" forward-word
-	bindkey -M viins "${key[Control-Right]}" forward-word
-	bindkey -M vicmd "${key[Control-Right]}" forward-word
+  bindkey -M emacs "${key[Control-Right]}" forward-word
+  bindkey -M viins "${key[Control-Right]}" forward-word
+  bindkey -M vicmd "${key[Control-Right]}" forward-word
 fi
 
 # Alt Left - go back a word
 key[Alt-Left]="${terminfo[kLFT3]}"
 if [[ -n "${key[Alt-Left]}"  ]]; then
-	bindkey -M emacs "${key[Alt-Left]}"  backward-word
-	bindkey -M viins "${key[Alt-Left]}"  backward-word
-	bindkey -M vicmd "${key[Alt-Left]}"  backward-word
+  bindkey -M emacs "${key[Alt-Left]}"  backward-word
+  bindkey -M viins "${key[Alt-Left]}"  backward-word
+  bindkey -M vicmd "${key[Alt-Left]}"  backward-word
 fi
 
 # Control Right - go forward a word
 key[Alt-Right]="${terminfo[kRIT3]}"
 if [[ -n "${key[Alt-Right]}" ]]; then
-	bindkey -M emacs "${key[Alt-Right]}" forward-word
-	bindkey -M viins "${key[Alt-Right]}" forward-word
-	bindkey -M vicmd "${key[Alt-Right]}" forward-word
+  bindkey -M emacs "${key[Alt-Right]}" forward-word
+  bindkey -M viins "${key[Alt-Right]}" forward-word
+  bindkey -M vicmd "${key[Alt-Right]}" forward-word
 fi
 
 # Bind custom keycode defined in alacritty (activated on Ctrl+Return) to accept suggestion
@@ -183,10 +183,10 @@ bindkey -M viins "[[CE" autosuggest-accept
 ## Useful aliases
 
 # Replace ls with exa
-alias ls='exa --color=always --no-quotes --group-directories-first --icons' # preferred listing
-alias la='exa -a --color=always --no-quotes --group-directories-first --icons'  # all files and dirs
-alias ll='exa -l -g --color=always --no-quotes --group-directories-first --icons'  # long format
-alias lt='exa -aT --color=always --no-quotes --group-directories-first --icons' # tree listing
+alias ls='exa --color=always --no-quotes --group-directories-first --icons'         # preferred listing
+alias la='exa -a --color=always --no-quotes --group-directories-first --icons'      # all files and dirs
+alias ll='exa -l -g --color=always --no-quotes --group-directories-first --icons'   # long format
+alias lt='exa -aT --color=always --no-quotes --group-directories-first --icons'     # tree listing
 alias lh='exa -ald --color=always --no-quotes --group-directories-first --icons .*' # show only dotfiles
 
 # Common use
@@ -210,7 +210,7 @@ alias grep='ugrep --color=auto'
 alias fgrep='ugrep -F --color=auto'
 alias egrep='ugrep -E --color=auto'
 alias diff='diff --color=auto'
-alias hw='hwinfo --short'                          # Hardware Info
+alias hw='hwinfo --short'
 alias ip='ip -color'
 alias df='df --human-readable'
 
@@ -226,17 +226,17 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
 
 # Helpers
-alias tb='nc termbin.com 9999'			   # Paste to termbin
-alias jctl='journalctl -p 3 -xb'  		   # Get the error messages from journalctl
+alias tb='nc termbin.com 9999'           # Paste to termbin
+alias jctl='journalctl -p 3 -xb'         # Get the error messages from journalctl
 alias helpme='cht.sh --shell'
 
 # Pacman helpers
 alias fixpacman="sudo rm /var/lib/pacman/db.lck"
-alias gitpkg='pacman -Q | grep -i "\-git" | wc -l' # List amount of -git packages
-alias big="expac -H M '%m\t%n' | sort -h | nl"     # Sort installed packages according to size in MB (expac must be installed)
-alias mirror="sudo reflector --country Russia --latest 15 --age 8 --fastest 20 --protocol https --sort rate --verbose --save /etc/pacman.d/mirrorlist"
-alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'   # Cleanup orphaned packages
+alias gitpkg='pacman -Q | grep -i "\-git" | wc -l'                            # List amount of -git packages
+alias big="expac -H M '%m\t%n' | sort -h | nl"                                # Sort installed packages according to size in MB (expac must be installed)
+alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'                              # Cleanup orphaned packages
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl" # Recent installed packages
+alias mirror="sudo reflector --country Russia --latest 15 --age 8 --fastest 20 --protocol https --sort rate --verbose --save /etc/pacman.d/mirrorlist"
 
 # Dotdrop helpers
 export DOTREPO="$HOME/.dotdrop"
@@ -246,12 +246,12 @@ alias dotsync="dotgit pull && dotgit add -A && dotgit commit && dotgit push; dot
 
 # Functions
 copy2cb() {
-	if [ -z "$SSH_CLIENT" ]; then
+  if [ -z "$SSH_CLIENT" ]; then
     xclip -selection clipboard
-	else
+  else
     # OSC52 terminal sequence
     base64 | xargs printf $'\e]52;c;%s\a'
-	fi
+  fi
 }
 
 # Source host specific settigns

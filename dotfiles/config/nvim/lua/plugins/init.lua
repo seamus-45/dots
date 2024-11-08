@@ -41,7 +41,10 @@ return {
         start_with_preview = "gA",
       },
     },
-    keys = { "ga", "gA" },
+    keys = {
+      {"ga", mode = { "n", "v" }},
+      {"gA", mode = { "n", "v" }},
+    },
   },
 
   {
