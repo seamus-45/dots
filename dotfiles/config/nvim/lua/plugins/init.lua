@@ -42,13 +42,13 @@ return {
       },
     },
     keys = {
-      {"ga", mode = { "n", "v" }},
-      {"gA", mode = { "n", "v" }},
+      { "ga", mode = { "n", "x" } },
+      { "gA", mode = { "n", "x" } },
     },
   },
 
   {
     "HiPhish/jinja.vim",
-    ft = {"jinja","*.jinja"}
+    ft = { "jinja", "*.jinja" },
   },
 }
