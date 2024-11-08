@@ -225,6 +225,9 @@ alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
 
+# Use neovim as editor
+export EDITOR="nvim"
+
 # Helpers
 alias tb='nc termbin.com 9999'           # Paste to termbin
 alias jctl='journalctl -p 3 -xb'         # Get the error messages from journalctl
@@ -243,6 +246,7 @@ export DOTREPO="$HOME/.dotdrop"
 export DOTDROP_CONFIG="$DOTREPO/config.yaml"
 alias dotgit="git -C $DOTREPO"
 alias dotsync="dotgit pull && dotgit add -A && dotgit commit && dotgit push; dotdrop install"
+alias dotconf="$EDITOR $DOTDROP_CONFIG"
 
 # Functions
 copy2cb() {
