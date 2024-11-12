@@ -19,6 +19,7 @@ local servers = {
   ansiblels = {},
   bashls = {},
   yamlls = {},
+  taplo = {},
   cssls = {},
 }
 
