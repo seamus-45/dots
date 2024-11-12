@@ -10,4 +10,4 @@ actions:
   ' Save in persistent': 'roficlip.py --add'
   ' Remove from persistent': 'roficlip.py --remove'
   '󰑌 Clear clipboard': 'roficlip.py --clear'
-  ' Open url with mpv to play': 'mpv %s'
+  ' Open url with mpv to play': 'playtube.sh %s'

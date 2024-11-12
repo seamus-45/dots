@@ -6,9 +6,5 @@ fi
 
 URL=$1
 
-if [[ ${URL} =~ ^viewtube ]];
-then
-  URL=$(echo ${URL} | sed -e "s/viewtube://")
-fi
-
-mpv -geometry -11-11 --autofit=500x300 -really-quiet --x11-name 'pip' "${URL}" &
+yt-dlp -q "${URL}" --proxy socks5://127.0.0.1:1080 -o - | mpv -force-seekable=yes --autofit=1920 -really-quiet - &
+  # mpv -force-seekable=yes --autofit=1920 -really-quiet --x11-name="pip" - &
