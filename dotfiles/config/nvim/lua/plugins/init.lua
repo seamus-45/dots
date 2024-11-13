@@ -23,27 +23,31 @@ return {
   },
 
   {
-    "OXY2DEV/markview.nvim",
-    ft = "markdown",
+    "kylechui/nvim-surround",
+    version = "*",
+    ft = "*",
     config = true,
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons",
-    },
   },
 
   {
     "echasnovski/mini.align",
     version = "*",
+    ft = "*",
     opts = {
       mappings = {
         start = "ga",
         start_with_preview = "gA",
       },
     },
-    keys = {
-      { "ga", mode = { "n", "x" } },
-      { "gA", mode = { "n", "x" } },
+  },
+
+  {
+    "OXY2DEV/markview.nvim",
+    ft = "markdown",
+    config = true,
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
     },
   },
 
