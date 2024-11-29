@@ -28,9 +28,10 @@ format = "[$path]($style)[$read_only]($read_only_style) "
 style = "bold cyan"
 read_only = " 󰌾"
 read_only_style = "red"
+repo_root_style = "purple bold"
 truncate_to_repo = true
 truncation_length = 0
-truncation_symbol = "repo: "
+truncation_symbol = "󰮠 "
 
 # Before all the version info (python, nodejs, php, etc.)
 [git_status]
