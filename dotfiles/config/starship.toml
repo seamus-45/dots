@@ -4,7 +4,7 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-format = "$all$battery$time$status$os$container$shell$character$jobs"
+format = "$all$battery$time$status$os$container$shell [╰─](yellow)$shlvl$jobs$character"
 
 ## FIRST LINE/ROW: Info & Status
 # First param ─┌
@@ -46,18 +46,11 @@ disabled = false
 format = "took [$duration]($style)"
 min_time = 1
 
-[shlvl]
-disabled = false
-threshold = 3
-format = "[$symbol$shlvl]($style) "
-style = "yellow"
-symbol = "#"
-
 ## SECOND LINE/ROW: Prompt
 # Somethere at the beginning
 [battery]
-charging_symbol = ""
 disabled = true
+charging_symbol = ""
 discharging_symbol = ""
 full_symbol = ""
 
@@ -83,11 +76,26 @@ format = " 🕙 $time($style)\n"
 style = "bright-white"
 time_format = "%T"
 
+[shlvl]
+disabled = false
+threshold = 3
+format = '[\[](yellow)[$symbol$shlvl]($style)[\]](yellow)'
+style = "202"
+symbol = "#"
+
+[jobs]
+disabled = false
+number_threshold = 1
+symbol_threshold = 1
+format = '[\[](yellow)[$symbol$number]($style)[\]](yellow)'
+style = '228'
+symbol = '&'
+
 # Prompt: param 2
 [character]
-error_symbol = ' [╰─\[]({{@@ user_color @@}})[I](red)[\]]({{@@ user_color @@}})'
-success_symbol = ' [╰─\[]({{@@ user_color @@}})[I](cyan)[\]]({{@@ user_color @@}})'
-vimcmd_symbol = ' [╰─\[]({{@@ user_color @@}})[N](yellow)[\]]({{@@ user_color @@}})'
+error_symbol = '[\[]({{@@ user_color @@}})[I](red)[\]]({{@@ user_color @@}})'
+success_symbol = '[\[]({{@@ user_color @@}})[I](cyan)[\]]({{@@ user_color @@}})'
+vimcmd_symbol = '[\[]({{@@ user_color @@}})[N](yellow)[\]]({{@@ user_color @@}})'
 
 # SYMBOLS
 [status]
