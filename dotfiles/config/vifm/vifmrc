@@ -246,7 +246,7 @@ filetype *.[1-8] man ./%c
 fileviewer *.[1-8] man ./%c | col -b
 
 " Images
-filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
+filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm,*.svg
         \ {View in feh}
         \ feh --fullscreen --scale-down --start-at  %c,
         \ {View in sxiv}

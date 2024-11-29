@@ -1,6 +1,9 @@
 # Connection helpers
-alias lxcL='ssh -t seamus-lxc tmux -u new-session -A -s lxc-L'
-alias lxcR='ssh -t seamus-lxc tmux -u new-session -A -s lxc-R'
+lxc() {
+  CLASS=$(xdotool getactivewindow getwindowclassname)
+  SESSION=${CLASS:-lxc}
+  ssh -t seamus-lxc tmux -u new-session -A -s ${SESSION} -t ${SESSION%-*}
+}
 
 # Garuda-home vars
 export MPD_HOST="/home/seamus/.mpd/socket"
