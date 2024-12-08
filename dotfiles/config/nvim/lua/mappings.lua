@@ -35,12 +35,13 @@ map({"n","t"}, "<m-l>", "<cmd>NvimTmuxNavigateRight<cr>", { desc = "Tmux Navigat
 map("n", "<F1>", "<cmd>NvCheatsheet<cr>")
 
 -- Nvim-Cmp navigation
-map("i", "<C-j>", function()
-  require("cmp").select_next_item()
-end)
-map("i", "<C-k>", function()
-  require("cmp").select_prev_item()
-end)
+-- (for now mapped in configs/cmp.lua)
+-- map("i", "<C-j>", function()
+--   require("cmp").select_next_item()
+-- end)
+-- map("i", "<C-k>", function()
+--   require("cmp").select_prev_item()
+-- end)
 
 -- UndoTree
 map("n", "<leader><backspace>", function()

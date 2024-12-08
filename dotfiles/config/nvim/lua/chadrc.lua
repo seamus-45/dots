@@ -5,20 +5,36 @@
 local M = {}
 
 M.base46 = {
-  theme = "material-darker",
+  theme = "falcon",
   transparency = false,
   -- theme_toggle = { "onedark", "one_light" },
-
   -- hl_override = {
   --  Comment = { italic = true },
   --  ["@comment"] = { italic = true },
   -- },
+  hl_override = {
+    Visual = { bg = "lightbg" },
+  },
+  changed_themes = {
+    falcon = {
+      base_30 = {
+        grey_fg = "grey",
+      },
+    },
+  },
+}
+
+M.lsp = {
+  signature = true,
 }
 
 M.ui = {
   statusline = {
     theme = "default",
     separator_style = "arrow",
+  },
+  cmp = {
+    style = "default",
   },
 }
 

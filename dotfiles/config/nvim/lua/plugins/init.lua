@@ -18,6 +18,12 @@ return {
   },
 
   {
+    "hrsh7th/nvim-cmp",
+    -- event = "InsertEnter",
+    opts = require "configs.cmp"
+  },
+
+  {
     "jiaoshijie/undotree",
     config = true,
   },
