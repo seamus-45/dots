@@ -20,6 +20,9 @@ return {
   {
     "hrsh7th/nvim-cmp",
     -- event = "InsertEnter",
+    dependencies = {
+      { "lukas-reineke/cmp-rg" },
+    },
     opts = require "configs.cmp"
   },
 

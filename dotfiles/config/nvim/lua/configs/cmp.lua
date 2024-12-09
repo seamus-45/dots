@@ -2,12 +2,13 @@
 local cmp = require "cmp"
 local options = {
   mapping = {
-    ["<CR>"] = cmp.mapping(
+    -- Bind custom keycode defined in alacritty (activated on Ctrl+Return) to accept suggestion
+    ["CE"] = cmp.mapping(
       cmp.mapping.confirm {
-        behavior = cmp.ConfirmBehavior.Insert,
+        behavior = cmp.ConfirmBehavior.Replace,
         select = true,
       },
-      { "i", "c" }
+      { "i", "s", "c" }
     ),
     ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
     ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
@@ -15,6 +16,7 @@ local options = {
   sources = {
     { name = "nvim_lsp" },
     { name = "luasnip" },
+    { name = "rg" },
     {
       name = "buffer",
       option = {
