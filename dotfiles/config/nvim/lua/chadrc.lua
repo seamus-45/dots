@@ -5,7 +5,7 @@
 local M = {}
 
 M.base46 = {
-  theme = "falcon",
+  theme = "material-darker",
   transparency = false,
   -- theme_toggle = { "onedark", "one_light" },
   -- hl_override = {

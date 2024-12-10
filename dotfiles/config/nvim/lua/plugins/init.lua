@@ -66,4 +66,10 @@ return {
     "HiPhish/jinja.vim",
     ft = { "jinja", "*.jinja" },
   },
+
+  {
+    "mfussenegger/nvim-ansible",
+    ft = { "yaml" },
+  },
+
 }
