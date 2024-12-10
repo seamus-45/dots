@@ -80,13 +80,9 @@ vim.keymap.set("n", "<RightMouse>", function()
 end, {})
 
 -- Show docs using external tool
-map({ "n", "v" }, "<m-d>", function()
+map({ "n", "v" }, "<leader>k", function()
   require("nvchad.term").runner {
     pos = "float",
-    float_opts = {
-      height = 0.9,
-      width = 0.7,
-    },
     cmd = function()
       local word = vim.fn.expand "<cword>"
       local ft_doc = {
@@ -94,6 +90,5 @@ map({ "n", "v" }, "<m-d>", function()
       }
       return ft_doc[vim.bo.ft]
     end,
-    clear_cmd = false,
   }
 end)

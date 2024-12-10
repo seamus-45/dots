@@ -28,6 +28,15 @@ M.lsp = {
   signature = true,
 }
 
+M.term = {
+  float = {
+    height = 0.8,
+    width = 0.8,
+    row = 0.1,
+    col = 0.1,
+  },
+}
+
 M.ui = {
   statusline = {
     theme = "default",
