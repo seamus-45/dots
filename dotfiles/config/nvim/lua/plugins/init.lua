@@ -25,7 +25,7 @@ return {
 
   {
     "lukas-reineke/cmp-rg",
-    ft = { "yaml", "jinja" },
+    ft = { "yaml", "yaml.ansible", "jinja" },
   },
 
   {

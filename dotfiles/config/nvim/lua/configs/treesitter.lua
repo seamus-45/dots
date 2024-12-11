@@ -23,6 +23,13 @@ local options = {
     "vimdoc",
     "yaml",
   },
+  highlight = {
+    enable = true,
+  },
+  indent = {
+    enable = true,
+    disable = { "yaml", "yaml.ansible" },
+  },
 }
 
 return options
