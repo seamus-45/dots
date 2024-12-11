@@ -15,6 +15,9 @@ M.base46 = {
   hl_override = {
     Visual = { bg = "lightbg" },
   },
+  hl_add = {
+    MsgArea = { fg = "teal" },
+  },
   changed_themes = {
     falcon = {
       base_30 = {

@@ -8,6 +8,7 @@
 
 local augroup = vim.api.nvim_create_augroup -- Create/get autocommand group
 local autocmd = vim.api.nvim_create_autocmd -- Create autocommand
+-- local hl = vim.api.nvim_set_hl              -- Set highlight
 
 -- Highlight on yank
 augroup("YankHighlight", { clear = true })
@@ -47,3 +48,21 @@ autocmd("FileType", {
   pattern = "nginx",
   command = "set noexpandtab ts=8 sts=0 sw=0 list",
 })
+
+-- autocmd("CmdlineEnter", {
+--   desc = "Set highlight for cmdline commands",
+--   callback = function()
+--     local get_theme_tb = require("base46").get_theme_tb
+--     local colors = get_theme_tb "base_30"
+--     hl(0, 'MsgArea', { fg = colors.white })
+--   end,
+-- })
+--
+-- autocmd("CmdlineLeave", {
+--   desc = "Set highlight for messages",
+--   callback = function()
+--     local get_theme_tb = require("base46").get_theme_tb
+--     local colors = get_theme_tb "base_30"
+--     hl(0, 'MsgArea', { fg = colors.light_grey })
+--   end,
+-- })
