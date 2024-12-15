@@ -209,7 +209,7 @@ alias free='free --mega --human'
 alias grep='ugrep --color=auto'
 alias fgrep='ugrep -F --color=auto'
 alias egrep='ugrep -E --color=auto'
-alias diff='diff --color=auto'
+# alias diff='diff --color=auto'
 alias hw='hwinfo --short'
 alias ip='ip -color'
 alias df='df --human-readable'
@@ -249,7 +249,7 @@ alias dotsync="dotgit pull && dotgit add -A && dotgit commit && dotgit push; dot
 alias dotconf="$EDITOR $DOTDROP_CONFIG"
 
 # Functions
-copy2cb() {
+function copy2cb() {
   if [ -z "$SSH_CLIENT" ]; then
     xclip -selection clipboard
   else
@@ -257,6 +257,9 @@ copy2cb() {
     base64 | xargs printf $'\e]52;c;%s\a'
   fi
 }
+
+# Better diff with bat
+function diff() { command diff $@ | bat --style=plain --language diff --tabs 0 }
 
 # Source host specific settigns
 [[ -f $ZCONFDIR/profile.d/$HOST.zsh ]] && source $ZCONFDIR/profile.d/$HOST.zsh

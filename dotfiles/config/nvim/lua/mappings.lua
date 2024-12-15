@@ -57,13 +57,13 @@ end, { desc = "Toggle Horizontal Term" })
 map("n", "<leader>cp", function()
   require("plenary.reload").reload_module "minty.huefy"
   require("minty.huefy").open()
-end, { desc = "Toggler color picker (huefy)" })
+end, { desc = "Toggle color picker (huefy)" })
 --
 -- Open color picker
 map("n", "<leader>cP", function()
   require("plenary.reload").reload_module "minty.shades"
   require("minty.shades").open()
-end, { desc = "Toggler color picker (shades)" })
+end, { desc = "Toggle color picker (shades)" })
 
 -- Open menu with keyboard
 vim.keymap.set("n", "<leader>m", function()

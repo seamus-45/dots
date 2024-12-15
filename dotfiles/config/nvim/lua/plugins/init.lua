@@ -5,6 +5,8 @@ return {
     opts = require "configs.conform",
   },
 
+  { "nvim-telescope/telescope.nvim", opts = require "configs.telescope" },
+
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -71,5 +73,4 @@ return {
     "mfussenegger/nvim-ansible",
     ft = { "yaml" },
   },
-
 }

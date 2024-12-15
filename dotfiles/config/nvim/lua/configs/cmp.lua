@@ -10,8 +10,11 @@ local options = {
       },
       { "i", "s", "c" }
     ),
-    ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
-    ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+    ["<C-e>"] = cmp.mapping(cmp.mapping.abort(), { "i", "s", "c" }),
+    ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s", "c" }),
+    ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s", "c" }),
+    ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s", "c" }),
+    ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s", "c" }),
   },
   sources = {
     { name = "nvim_lsp" },

@@ -13,10 +13,18 @@ M.base46 = {
   --  ["@comment"] = { italic = true },
   -- },
   hl_override = {
-    Visual = { bg = "lightbg" },
+    Visual = { bg = { "black", "nord_blue", 30 } },
+    Search = { bg = { "white", "nord_blue", 70 } },
+    Substitute = { bg = "nord_blue" },
   },
   hl_add = {
+    CurSearch = { bg = { "white", "nord_blue", 20 }, fg = "black" },
+    IncSearch = { bg = "white", fg = "black" },
     MsgArea = { fg = "teal" },
+    NoiceCmdlineIconCmdline = { fg = "teal" },
+    NoiceCmdlineIconFilter = { fg = "red" },
+    NoiceCmdlineIconHelp = { fg = "purple" },
+    NoiceVirtualText = { fg = { "grey", "cyan", 50 } },
   },
   changed_themes = {
     falcon = {
