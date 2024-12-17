@@ -25,6 +25,7 @@ M.base46 = {
     NoiceCmdlineIconFilter = { fg = "red" },
     NoiceCmdlineIconHelp = { fg = "purple" },
     NoiceVirtualText = { fg = { "grey", "cyan", 50 } },
+    GitSignsCurrentLineBlame = { fg = { "grey", "cyan", 50 } },
   },
   changed_themes = {
     falcon = {
