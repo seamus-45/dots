@@ -241,9 +241,12 @@ filetype *.html,*.htm links, lynx
 " Object
 filetype *.o nm %f | less
 
+" Log file
+filetype *.log,*.log.[0-9],*.log.[0-9][0-9] bat --style plain --color always --paging always --pager /usr/bin/less %c
+
 " Man page
-filetype *.[1-8] man ./%c
-fileviewer *.[1-8] man ./%c | col -b
+"filetype *.[1-8] man ./%c
+"fileviewer *.[1-8] man ./%c | col -b
 
 " Images
 filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm,*.svg
@@ -317,17 +320,17 @@ fileviewer *.docx, docx2txt.pl %f -
 fileviewer *.pcap,*.pcapng ngrep -I %c
 
 " Syntax highlighting in preview
-fileviewer *.[ch],*.[ch]pp  bat --color always --wrap never --pager never %c -p
-fileviewer Makefile,Makefile.*,*.cmake,*.spec  bat --color always --wrap never --pager never %c -p
-fileviewer *.html,*.htm,*.css  bat --color always --wrap never --pager never %c -p
-fileviewer *.diff  bat --color always --wrap never --pager never %c -p
-fileviewer *.go,*.lua,*.php,*.pl,*.py,*.rb,*.sh  bat --color always --wrap never --pager never %c -p
-fileviewer *.ini,*.cfg,*.desktop  bat --color always --wrap never --pager never %c -p
-fileviewer *.j2,*.jinja,*.jinja2  bat --color always --wrap never --pager never %c -p
-fileviewer *.md,*.txt  bat --color always --wrap never --pager never %c -p
-fileviewer *.yaml,*.yml,*.json,*.xml  bat --color always --wrap never --pager never %c -p
-fileviewer Dockerfile,Vagrantfile  bat --color always --wrap never --pager never %c -p
-fileviewer *.vim,vimrc,gvimrc  bat --color always --wrap never --pager never %c -p
+fileviewer *.[ch],*.[ch]pp  bat --color always --wrap never -pp %c
+fileviewer Makefile,Makefile.*,*.cmake,*.spec  bat --color always --wrap never -pp %c
+fileviewer *.html,*.htm,*.css  bat --color always --wrap never -pp %c
+fileviewer *.diff  bat --color always --wrap never -pp %c
+fileviewer *.go,*.lua,*.php,*.pl,*.py,*.rb,*.sh  bat --color always --wrap never -pp %c
+fileviewer *.ini,*.cfg,*.desktop  bat --color always --wrap never -pp %c
+fileviewer *.j2,*.jinja,*.jinja2  bat --color always --wrap never -pp %c
+fileviewer *.md,*.txt  bat --color always --wrap never -pp %c
+fileviewer *.yaml,*.yml,*.json,*.xml  bat --color always --wrap never -pp %c
+fileviewer Dockerfile,Vagrantfile  bat --color always --wrap never -pp %c
+fileviewer *.vim,vimrc,gvimrc  bat --color always --wrap never -pp %c
 
 "
 " Or leave it for automatic detection
@@ -392,7 +395,7 @@ nnoremap i <c-G>
 nnoremap <space> tj
 
 " Example of standard two-panel file managers mappings
-nnoremap <f3> :!nvimpager %f<cr>
+nnoremap <f3> :!bat --style plain --color always --paging always --pager /usr/bin/less %f<cr>
 nnoremap <f4> :edit<cr>
 nnoremap <f5> :copy<cr>
 nnoremap <f6> :move<cr>
