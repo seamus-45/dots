@@ -114,6 +114,9 @@ profiles:
     - f_zlogin
     - f_roficlip_persistent.db
     - d_roficlip
+  seamus-vps:
+    include:
+    - meta-base
 variables:
   apps_bin: "${{HOME}}/.local/apps/bin"
   git_installed: (test -x /usr/bin/git)
