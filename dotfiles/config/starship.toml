@@ -11,8 +11,8 @@ format = "$all$battery$time$status$os$container$shell [╰─](yellow)$python$sh
 [username]
 format = " [╭─$user]($style)@"
 show_always = true
-style_root = "bold yellow"
-style_user = "bold yellow"
+style_root = "bold {{@@ user_color @@}}"
+style_user = "bold {{@@ user_color @@}}"
 
 # Second param
 [hostname]
@@ -98,9 +98,9 @@ style = '228'
 symbol = '&'
 
 [character]
-error_symbol = '[\[](yellow)[I](red)[\]](yellow)'
-success_symbol = '[\[](yellow)[I](cyan)[\]](yellow)'
-vimcmd_symbol = '[\[](yellow)[N](yellow)[\]](yellow)'
+error_symbol = '[\[]({{@@ user_color @@}})[I](red)[\]]({{@@ user_color @@}})'
+success_symbol = '[\[]({{@@ user_color @@}})[I](cyan)[\]]({{@@ user_color @@}})'
+vimcmd_symbol = '[\[]({{@@ user_color @@}})[N](yellow)[\]]({{@@ user_color @@}})'
 
 # SYMBOLS
 [status]
