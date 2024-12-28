@@ -18,6 +18,7 @@ local servers = {
   },
   ansiblels = {},
   bashls = {},
+  bitbake_ls = {},
   yamlls = {},
   taplo = {},
   cssls = {},

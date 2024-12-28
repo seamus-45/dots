@@ -16,8 +16,10 @@ M.base46 = {
     Visual = { bg = { "black", "nord_blue", 30 } },
     Search = { bg = { "white", "nord_blue", 70 } },
     Substitute = { bg = "nord_blue" },
+    -- NonText = { fg = "red" },
   },
   hl_add = {
+    -- Whitespace = { fg = "red" },
     CurSearch = { bg = { "white", "nord_blue", 20 }, fg = "black" },
     IncSearch = { bg = "white", fg = "black" },
     MsgArea = { fg = "teal" },
