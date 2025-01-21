@@ -2,7 +2,7 @@
 lxc() {
   CLASS=$(xdotool getactivewindow getwindowclassname)
   SESSION=${CLASS:-lxc}
-  ssh -t seamus-lxc tmux -u new-session -A -s ${SESSION} -t ${SESSION%-*}
+  ssh -t seamus.core tmux -u new-session -A -s ${SESSION} -t ${SESSION%-*}
 }
 
 # Garuda-home vars
