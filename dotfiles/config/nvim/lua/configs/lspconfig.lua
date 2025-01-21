@@ -22,6 +22,7 @@ local servers = {
   yamlls = {},
   taplo = {},
   cssls = {},
+  ts_ls = {},
 }
 
 for name, opts in pairs(servers) do
