@@ -20,6 +20,7 @@ local servers = {
   bashls = {},
   bitbake_ls = {},
   yamlls = {},
+  jsonls = {},
   taplo = {},
   cssls = {},
   ts_ls = {},
