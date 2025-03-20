@@ -3,6 +3,7 @@ local options = {
     "bash",
     "diff",
     "dockerfile",
+    "hcl",
     "html",
     "http",
     "ini",
