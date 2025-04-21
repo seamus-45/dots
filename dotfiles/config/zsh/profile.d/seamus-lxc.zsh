@@ -5,8 +5,13 @@ alias tmuxp="signmykey -e; tmuxp"
 alias ansible="signmykey -e; ansible"
 alias ansible-playbook="signmykey -e; ansible-playbook"
 alias htop='gotop'
-# usage: cat file.yml | yaml2json
+
+# Usage: cat file.yml | yaml2json
 alias yaml2json="python3 -c 'import sys, yaml, json; json.dump(yaml.safe_load(sys.stdin), sys.stdout, indent=2)'"
+
+# Python venv helpers
+alias venv-molecule="source ~/gitlab/ansible-molecule/venv/bin/activate"
+alias venv-ansible="source ~/gitlab/ansible-vm-config/venv/bin/activate"
 
 # Vault helpers
 vault_ldap_login() {
