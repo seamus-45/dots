@@ -266,6 +266,7 @@ function diff() { command diff $@ | bat --style=plain --language diff --tabs 0 }
 
 # Generate ls colors
 export LS_COLORS="$(vivid generate seamus)"
+alias env="env -u LS_COLORS"
 
 ## Load Atuin
 # ZVM plugin will auto execute this zvm_after_init function
