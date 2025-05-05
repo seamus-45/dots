@@ -6,8 +6,6 @@ windows:
     panes:
       - shell_command:
         - source ./venv/bin/activate
-      - shell_command:
-        -
   - window_name: A0
     start_directory: "~/gitlab"
     panes:
