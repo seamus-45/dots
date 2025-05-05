@@ -14,8 +14,7 @@ windows:
       - shell_command:
         - ssh -q crowdsec.infranet.co
   - window_name: Ans
-    start_directory: "~/gitlab/ansible-stable"
+    start_directory: "~/gitlab/ansible-vm-config"
     panes:
       - shell_command:
-        - source ./activate
-        - cd ../ansible-vm-config
+        - source venv/bin/activate
