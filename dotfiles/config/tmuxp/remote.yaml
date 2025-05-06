@@ -18,3 +18,9 @@ windows:
     panes:
       - shell_command:
         - source venv/bin/activate
+  - window_name: Fc
+    start_directory: "~/gitlab/ansible-vm-config"
+    panes:
+      - shell_command:
+        - source venv/bin/activate
+        - cd ~/gitlab/frontends-configs

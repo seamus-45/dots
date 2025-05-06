@@ -26,4 +26,4 @@ vault_my_token() { cat ~/.vault-token | copy2cb }
 # Work vars
 export VAULT_ADDR=https://vault.maxim.services:8200
 export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
-export TECHNO_REGIONS='ru ir sg id br cl'
+export TECHNO_REGIONS=(ru ir sg id br cl)
