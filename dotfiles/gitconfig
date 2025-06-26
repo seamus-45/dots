@@ -7,10 +7,11 @@
 [user]
 {%@@ if profile == 'seamus-lxc' @@%}
         name = Федотов Сергей
+        email = fedotov_sv@taximaxim.ru
 {%@@ else @@%}
         name = seamus-45
+        email = seamus-45@proton.me
 {%@@ endif @@%}
-        email = fedotov_sv@taximaxim.ru
 [push]
         autoSetupRemote = true
 [pull]
@@ -18,3 +19,5 @@
 [log]
         decorate = true
         abbrevCommit = true
+[core]
+        editor = nvim
