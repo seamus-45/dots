@@ -27,3 +27,8 @@ vault_my_token() { cat ~/.vault-token | copy2cb }
 export VAULT_ADDR=https://vault.maxim.services:8200
 export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
 export TECHNO_REGIONS=(ru ir sg id br cl)
+
+# Dumb way for disabling unneeded completions
+__git_heads_remote() {}
+__git_tags_of_type() {}
+__git_recent_commits() {}

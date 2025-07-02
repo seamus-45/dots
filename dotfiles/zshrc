@@ -52,7 +52,8 @@ source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 ## Options section
 setopt correct                                                  # Auto correct mistakes
-#setopt extendedglob                                             # Extended globbing. Allows using regular expressions with *
+setopt extendedglob                                             # Extended globbing. Allows using regular expressions with *
+setopt nonomatch                                                # Set zsh no-match behavior is the same as bash
 setopt interactivecomments                                      # Allow comments in command buffer
 setopt nocaseglob                                               # Case insensitive globbing
 setopt rcexpandparam                                            # Array expension with parameters
