@@ -107,6 +107,11 @@ profiles:
     - d_htop
     - d_gotop
     - d_tmuxp
+  seamus-pad:
+    include:
+    - meta-base
+    dotfiles:
+    - d_htop
   garuda-seamus:
     include:
     - meta-base
