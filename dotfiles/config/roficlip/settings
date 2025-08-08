@@ -3,8 +3,8 @@ settings:
   newline_char: ''
   notify: True
   notify_timeout: 2
-  show_comments_first: True
-  colored_comments: True
+  show_comments_first: False
+  colored_comments: False
 
 actions:
   ' Save in persistent': 'roficlip.py --add'
