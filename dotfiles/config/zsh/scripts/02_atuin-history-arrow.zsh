@@ -39,7 +39,7 @@
 #----------------------------------
 
 # global configuration
-: ${ATUIN_HISTORY_SEARCH_FILTER_MODE='session'}
+: ${ATUIN_HISTORY_SEARCH_FILTER_MODE='directory'}
 
 # internal variables
 typeset -g -i _atuin_history_match_index

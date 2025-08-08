@@ -107,6 +107,7 @@ mark b ~/.local/bin/
 mark d ~/downloads
 mark D ~/dotfiles/dotfiles
 mark g ~/gitlab
+mark n ~/nixtools
 mark l /var/log
 
 " }}}
