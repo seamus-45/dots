@@ -102,11 +102,11 @@ history_format = "{time}\t{command}"
 ## https://docs.rs/regex/latest/regex/#syntax
 history_filter = [
   "^vifm",
-  "^df",
-  "^ll",
-  "^htop",
-  "^free",
-  "^ss",
+  "^df -h",
+  "^ll$",
+  "^htop$",
+  "^free$",
+  "^ss -",
   "^cd ..",
   "^cd -",
   "VAULT_TOKEN="
