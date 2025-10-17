@@ -46,7 +46,7 @@ autocmd("BufReadPost", {
 autocmd("FileType", {
   desc = "Set indent options for nginx config",
   pattern = "nginx",
-  command = "set noexpandtab ts=8 sts=0 sw=0 list",
+  command = "set noexpandtab ts=8 sts=0 sw=0 list nonumber",
 })
 
 -- autocmd("CmdlineEnter", {

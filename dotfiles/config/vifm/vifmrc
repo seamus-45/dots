@@ -102,6 +102,7 @@ source $HOME/.config/vifm/icons
 " :mark mark /full/directory/path [filename]
 
 mark h ~/
+mark a ~/.ansible
 mark c ~/.config
 mark b ~/.local/bin/
 mark d ~/downloads

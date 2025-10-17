@@ -250,14 +250,27 @@ alias dotsync="dotgit pull && dotgit add -A && dotgit commit && dotgit push; dot
 alias dotconf="$EDITOR $DOTDROP_CONFIG"
 
 # Functions
-function copy2cb() {
-  if [ -z "$SSH_CLIENT" ]; then
-    xclip -selection clipboard
-  else
-    # OSC52 terminal sequence
-    base64 | xargs printf $'\e]52;c;%s\a'
-  fi
+# Функция для копирования в буфер через OSC52
+osc52-copy() {
+    local text
+    if [ -t 0 ]; then
+        # Аргумент передан как параметр
+        text="${1:-}"
+    else
+        # Текст передан через pipe
+        text="$(cat)"
+    fi
+    
+    if [ -z "$text" ]; then
+        echo "Usage: osc52-copy <text> or echo text | osc52-copy"
+        return 1
+    fi
+    
+    # Кодируем в base64 и отправляем OSC52 последовательность
+    printf '\033]52;c;%s\007' "$(echo -n "$text" | base64 | tr -d '\n')"
+    echo "✓ Скопировано в буфер через OSC52"
 }
+alias clip='osc52-copy'
 
 # Better diff with bat
 function diff() { command diff $@ | bat --style=plain --language diff --tabs 0 }
