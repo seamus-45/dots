@@ -291,8 +291,3 @@ function zvm_after_init() {
 
 # Load up-arrow hack for atuin
 source $ZCONFDIR/scripts/02_atuin-history-arrow.zsh
-
-## Show system info
-if command -v fastfetch; then
-  fastfetch --config mokka.jsonc
-fi
