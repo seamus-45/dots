@@ -101,14 +101,22 @@ history_format = "{time}\t{command}"
 ## For details on the supported regular expression syntax, see
 ## https://docs.rs/regex/latest/regex/#syntax
 history_filter = [
-  "^vifm",
-  "^df -h",
-  "^ll$",
-  "^htop$",
-  "^free$",
-  "^ss -",
-  "^cd ..",
+  "^bc$",
+  "^cal$",
   "^cd -",
+  "^cd ..",
+  "^date$",
+  "^df -h",
+  "^free$",
+  "^htop$",
+  "^ipython$",
+  "^ll$",
+  "^ls -1$",
+  "^man",
+  "^ss -",
+  "^ssh-keygen",
+  "^vifm",
+  "^which",
   "VAULT_TOKEN="
 ]
 
