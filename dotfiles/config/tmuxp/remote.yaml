@@ -5,22 +5,13 @@ windows:
     panes:
       - shell_command:
         - ssh -q ns01.infranet.co
-  - window_name: LE
-    panes:
-      - shell_command:
-        - ssh -q letsencrypt.infranet.co
-  - window_name: CS
-    panes:
-      - shell_command:
-        - ssh -q crowdsec.infranet.co
-  - window_name: Ans
+  - window_name: Avc
     start_directory: "~/gitlab/ansible-vm-config"
     panes:
       - shell_command:
-        - source venv/bin/activate
+        - source ~/gitlab/ansible-vm-config/venv/bin/activate
   - window_name: Fc
-    start_directory: "~/gitlab/ansible-vm-config"
+    start_directory: "~/gitlab/frontends-configs"
     panes:
       - shell_command:
-        - source venv/bin/activate
-        - cd ~/gitlab/frontends-configs
+        - source ~/gitlab/ansible-vm-config/venv/bin/activate
