@@ -84,7 +84,7 @@ symbol = " "
 # Prompt3
 [shlvl]
 disabled = false
-threshold = 3
+threshold = 2
 format = '[\[](yellow)[$symbol$shlvl]($style)[\]](yellow)'
 style = "202"
 symbol = "#"
