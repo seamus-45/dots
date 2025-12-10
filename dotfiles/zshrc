@@ -272,6 +272,14 @@ osc52-copy() {
 }
 alias clip='osc52-copy'
 
+# Speedtest shortcut
+qms-test() {
+  pushd ~/.local/apps/qms
+  ./qms_lib -P $@
+  popd
+}
+alias speedtest-rt='qms-test'
+
 # Better diff with bat
 function diff() { command diff $@ | bat --style=plain --language diff --tabs 0 }
 
