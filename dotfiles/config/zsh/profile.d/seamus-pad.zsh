@@ -20,3 +20,4 @@ fi
 # Fix cellular network problems
 alias pacman="env https_proxy=socks://127.0.0.1:1080 pacman"
 alias paru="env https_proxy=socks://127.0.0.1:1080 paru"
+alias garuda-update="env https_proxy=127.0.0.1:1080 garuda-update"
