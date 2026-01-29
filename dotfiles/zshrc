@@ -274,9 +274,9 @@ alias clip='osc52-copy'
 
 # Speedtest shortcut
 qms-test() {
-  pushd ~/.local/apps/qms
+  pushd ~/.local/apps/qms >/dev/null
   ./qms_lib -P $@
-  popd
+  popd >/dev/null
 }
 alias speedtest-rt='qms-test'
 

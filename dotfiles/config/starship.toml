@@ -6,6 +6,8 @@
 
 format = "$all$battery$time$status$os$container$shell [╰─]({{@@ user_color @@}})$python$shlvl$jobs$character"
 
+scan_timeout = 100
+
 ## FIRST LINE/ROW: Info & Status
 # First param ─┌
 [username]
