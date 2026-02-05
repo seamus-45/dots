@@ -1,0 +1,45 @@
+#!/bin/bash
+# Downloads current inventory and allow user to search by hostname and ssh into selected host.
+# Dependencies: curl, jq, fzf
+
+PROGNAME=$(basename "$0")
+DEFAULT_SEARCH=${@:-''}
+
+if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
+	echo "Usage: $PROGNAME {default-search-string}"
+	echo "Hosts from all inventories used. Result is cached to /tmp"
+	exit 1
+fi
+
+
+download() {
+	curl https://ansible-inv.taxsee.com/all.json --etag-save "$ETAG_FILE" -s \
+		| jq --monochrome-output --raw-output '[.[].hosts] | flatten | .[]' \
+		| sort | uniq | grep -v -e null -e ".alias$" > "$CACHE_FILE"
+}
+
+CACHE_FILE=/tmp/invsshhost.$USER.cache
+ETAG_FILE="$CACHE_FILE.etag"
+if [ -f "$CACHE_FILE" ]; then
+	echo "[INFO] file $CACHE_FILE found, check for update"
+	HTTP_CODE=$(curl https://ansible-inv.taxsee.com/all.json --etag-compare "$ETAG_FILE" -s -w "%{http_code}")
+	if [ "$HTTP_CODE" != "304" ]; then
+		echo "[INFO] file $CACHE_FILE outdated, download ans save to cache"
+		download
+	fi
+else
+	echo "[INFO] file $CACHE_FILE not found, download and save to cache"
+	download
+fi
+
+HOST=$(cat "$CACHE_FILE" \
+	| fzf --query "$DEFAULT_SEARCH" --print-query -1 --header="Choose host to ssh into using all inventory, CTRL+C to cancel" \
+	| tail -n 1)
+
+if [ "$HOST" != "" ]; then
+	IP=$(dig +short "$HOST")
+	echo "[INFO] ssh into $HOST ip $IP"
+	ssh $HOST
+else
+	echo "[INFO] no host selected"
+fi
