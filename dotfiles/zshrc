@@ -275,7 +275,6 @@ alias clip='osc52-copy'
 
 # vifm
 vifm-current() {
-  echo "$#"
   if [ $# -lt 1 ]; then
     vifm . ~
   else
