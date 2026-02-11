@@ -21,6 +21,7 @@ local servers = {
   taplo = {},
   cssls = {},
   ts_ls = {},
+  termux_language_server = {},
 }
 
 for name, opts in pairs(servers) do
