@@ -273,6 +273,17 @@ osc52-copy() {
 }
 alias clip='osc52-copy'
 
+# vifm
+vifm-current() {
+  echo "$#"
+  if [ $# -lt 1 ]; then
+    vifm . ~
+  else
+    vifm $@
+  fi
+}
+alias vifm='vifm-current'
+
 # Speedtest shortcut
 qms-test() {
   pushd ~/.local/apps/qms >/dev/null
