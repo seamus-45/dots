@@ -1,7 +1,7 @@
 #!/bin/bash
 # Change current wallpaper for my bspwm
 
-ITEMS=("$HOME"/Pictures/Wallpapers/bspwm/*)
+ITEMS=("$HOME"/pictures/Wallpapers/bspwm/*)
 LEN=${#ITEMS[@]}
 CURRENT=$(cat "$HOME"/.config/bspwm/wallpaper)
 

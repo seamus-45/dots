@@ -5,7 +5,7 @@
 local M = {}
 
 M.base46 = {
-  theme = "ashes",
+  theme = "flexoki-light",
   transparency = false,
   -- theme_toggle = { "onedark", "one_light" },
   -- hl_override = {
