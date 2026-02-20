@@ -236,12 +236,12 @@ alias jctl='journalctl -p 3 -xb'         # Get the error messages from journalct
 alias helpme='cht.sh --shell'
 
 # Pacman helpers
-alias fixpacman="sudo rm /var/lib/pacman/db.lck"
-alias gitpkg='pacman -Q | grep -i "\-git" | wc -l'                            # List amount of -git packages
-alias big="expac -H M '%m\t%n' | sort -h | nl"                                # Sort installed packages according to size in MB (expac must be installed)
-alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'                              # Cleanup orphaned packages
-alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl" # Recent installed packages
-alias mirror="sudo reflector --country Russia --latest 15 --age 8 --fastest 20 --protocol https --sort rate --verbose --save /etc/pacman.d/mirrorlist"
+alias pacgit='pacman -Q | grep -i "\-git" | wc -l'                            # List amount of -git packages
+alias pacbig="expac -H M '%m\t%n' | sort -h | nl"                             # Sort installed packages according to size in MB (expac must be installed)
+alias paclean='sudo pacman -Rns $(pacman -Qtdq)'                              # Cleanup orphaned packages
+alias pacrip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl" # Recent installed packages
+alias pacaur="pacman -Qm"                                                     # List AUR installed packages
+alias pacmirror="sudo reflector --country Russia --latest 15 --age 8 --fastest 20 --protocol https --sort rate --verbose --save /etc/pacman.d/mirrorlist"
 
 # Dotdrop helpers
 export DOTREPO="$HOME/.dotdrop"
