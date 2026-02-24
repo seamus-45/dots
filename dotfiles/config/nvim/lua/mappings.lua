@@ -91,3 +91,10 @@ map({ "n", "v" }, "<leader>k", function()
     end,
   }
 end)
+
+-- neovide specific settings
+if vim.g.neovide then
+  map('n', '<sc-v>', '"+p', {noremap = true})
+  map('v', '<sc-c>', '"+y', {noremap = true})
+  map('i', '<sc-v>', '<ESC>"+p', {noremap = true})
+end
