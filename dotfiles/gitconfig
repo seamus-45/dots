@@ -7,7 +7,7 @@
 [user]
 {%@@ if profile == 'seamus-lxc' @@%}
         name = Федотов Сергей
-        email = fedotov_sv@taximaxim.ru
+        email = fedotov_sv@maxim-technology.com
 {%@@ else @@%}
         name = seamus-45
         email = seamus-45@proton.me
@@ -21,3 +21,5 @@
         abbrevCommit = true
 [core]
         editor = nvim
+[fetch]
+        prune = true
