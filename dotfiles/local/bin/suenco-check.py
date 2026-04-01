@@ -6,15 +6,6 @@ from datetime import datetime
 import notify2
 
 
-def parse_iso_datetime(dt_str):
-    """
-    Парсит ISO строку с часовым поясом.
-    Удаляет часовой пояс для упрощения парсинга.
-    """
-    dt_str = dt_str.replace('+05:00', '')
-    return datetime.fromisoformat(dt_str)
-
-
 # URL с параметрами
 url = "https://gateway.suenco.ru/api/pon/site"
 sites = [
@@ -25,6 +16,15 @@ sites = [
 ]
 # Заголовки
 headers = {"Accept": "application/json"}
+
+
+def parse_iso_datetime(dt_str):
+    """
+    Парсит ISO строку с часовым поясом.
+    Удаляет часовой пояс для упрощения парсинга.
+    """
+    dt_str = dt_str.replace('+05:00', '')
+    return datetime.fromisoformat(dt_str)
 
 
 def check_and_notify():
