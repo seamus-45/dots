@@ -41,7 +41,6 @@ def check_and_notify():
 
             # Получаем текущее время
             current_time = datetime.now()
-            print(current_time)
 
             # Проверяем каждый элемент в JSON
             for item in data:
@@ -60,6 +59,7 @@ def check_and_notify():
 
                     # Создаем и отправляем уведомление
                     notification = notify2.Notification(summary, message)
+                    notification.set_urgency(notify2.URGENCY_CRITICAL)
                     notification.show()
 
                     # print(f"Отправлено уведомление: {summary}")
