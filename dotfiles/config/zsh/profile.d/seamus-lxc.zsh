@@ -1,5 +1,5 @@
 # Work helpers
-alias ssh="signmykey -e; ssh"
+alias ssh="signmykey -e; ssh -q"
 alias scp="signmykey -e; scp"
 alias tmuxp="signmykey -e; tmuxp"
 alias ansible="signmykey -e; ansible"
