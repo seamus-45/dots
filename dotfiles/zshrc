@@ -68,6 +68,9 @@ setopt auto_pushd
 setopt pushd_ignore_dups
 setopt pushdminus
 
+# For menuselect keymap
+zmodload zsh/complist
+
 # Completion.
 autoload -Uz compinit
 compinit
@@ -98,6 +101,12 @@ SAVEHIST=10000
 
 # Use vi key bindings
 bindkey -v
+
+# Vim mappings for completion menu
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
 
 # [Home] - Go to beginning of line
 if [[ -n "${terminfo[khome]}" ]]; then

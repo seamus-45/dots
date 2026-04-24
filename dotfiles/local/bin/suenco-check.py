@@ -2,7 +2,10 @@
 
 import requests
 import json
+
 from datetime import datetime
+from typing import List, Dict, Any
+
 import notify2
 
 
@@ -27,7 +30,58 @@ def parse_iso_datetime(dt_str):
     return datetime.fromisoformat(dt_str)
 
 
+def merge_outage_events(events: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """
+    Группирует события по одинаковым метаданным (оборудование, адрес, район)
+    и возвращает единый список с объединёнными временными рамками.
+    """
+    if not events:
+        return []
+
+    # 1. Группируем события по неизменяемым полям
+    groups: Dict[tuple, List[Dict]] = {}
+    for evt in events:
+        key = (evt['equipment'], evt['addresses'], evt['locality'], evt['planned'])
+        groups.setdefault(key, []).append(evt)
+
+    merged: List[Dict[str, Any]] = []
+
+    # 2. Обрабатываем каждую группу отдельно
+    for key, group in groups.items():
+        # Сортируем по времени начала
+        group.sort(key=lambda x: parse_iso_datetime(x['begPeriod']))
+
+        intervals: List[List[datetime]] = []
+        for evt in group:
+            start = parse_iso_datetime(evt['begPeriod'])
+            end = parse_iso_datetime(evt['endPeriod'])
+            bn = parse_iso_datetime(evt['begNotify'])
+
+            if not intervals:
+                intervals.append([start, end, bn])
+            else:
+                # Если текущее начало <= последнего конца → интервалы пересекаются или касаются
+                if start <= intervals[-1][1]:
+                    intervals[-1][1] = max(intervals[-1][1], end)
+                else:
+                    intervals.append([start, end, bn])
+
+        # 3. Формируем итоговые объекты на основе базовых данных группы
+        base = group[0]
+        for start, end, bn in intervals:
+            new_evt = base.copy()
+            new_evt['begPeriod'] = start.isoformat()
+            new_evt['endPeriod'] = end.isoformat()
+            new_evt['begNotify'] = bn.isoformat()
+            merged.append(new_evt)
+
+    return merged
+
+
 def check_and_notify():
+    """
+    Отправляет уведомление на рабочий стол о плановых работах
+    """
     for params in sites:
         try:
             # Выполняем GET-запрос
@@ -37,23 +91,23 @@ def check_and_notify():
             response.raise_for_status()
 
             # Парсим JSON
-            data = response.json()
+            data = merge_outage_events(response.json())
 
             # Получаем текущее время
             current_time = datetime.now()
 
             # Проверяем каждый элемент в JSON
-            for item in data:
+            for evt in data:
                 # Парсим даты
-                beg_notify = parse_iso_datetime(item['begNotify'])
-                beg_period = parse_iso_datetime(item['begPeriod'])
-                end_period = parse_iso_datetime(item['endPeriod'])
+                beg_notify = parse_iso_datetime(evt['begNotify'])
+                beg_period = parse_iso_datetime(evt['begPeriod'])
+                end_period = parse_iso_datetime(evt['endPeriod'])
 
                 # Проверяем условие
                 if beg_notify <= current_time <= beg_period:
                     # Формируем сообщение
-                    summary = item['equipment']
-                    message = (f"Плановые отключения по адресу: {', '.join(item['addresses'].split(', ')[3:])}\n"
+                    summary = evt['equipment']
+                    message = (f"Плановые отключения по адресу: {', '.join(evt['addresses'].split(', ')[3:])}\n"
                                f"Начало: {beg_period.strftime("%Y.%m.%d %H:%M")}\n"
                                f"Конец: {end_period.strftime("%Y.%m.%d %H:%M")}")
 
@@ -77,5 +131,4 @@ def check_and_notify():
 if __name__ == "__main__":
     # Инициализируем notify2
     notify2.init('Отключения электроэнергии')
-
     check_and_notify()
