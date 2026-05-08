@@ -83,10 +83,13 @@ dotfiles:
     src: config/roficlip
     dst: ~/.config/roficlip
     actions:
-      - pull_roficlip
+    - pull_roficlip
   d_pipewire:
     src: config/pipewire
     dst: ~/.config/pipewire
+  d_alacritty:
+    src: config/alacritty
+    dst: ~/.config/alacritty
 profiles:
   meta-base:
     dotfiles:
@@ -115,6 +118,7 @@ profiles:
     - meta-base
     dotfiles:
     - d_htop
+    - d_alacritty
   garuda-seamus:
     include:
     - meta-base
@@ -123,6 +127,7 @@ profiles:
     - f_roficlip_persistent.db
     - d_roficlip
     - d_pipewire
+    - d_alacritty
   seamus-vps:
     include:
     - meta-base
@@ -130,10 +135,12 @@ profiles:
     include:
     - meta-base
 variables:
-  apps_bin: "${{HOME}}/.local/apps/bin"
+  apps_bin: ${{HOME}}/.local/apps/bin
   git_installed: (test -x /usr/bin/git)
-  roficlip_path: "${{HOME}}/.local/apps/roficlip/"
-  roficlip_url: "https://github.com/seamus-45/roficlip.git"
+  roficlip_path: ${{HOME}}/.local/apps/roficlip/
+  roficlip_url: https://github.com/seamus-45/roficlip.git
   roficlip_ne: (test ! -d "{{@@ roficlip_path @@}}")
 actions:
-  pull_roficlip: "{{@@ git_installed @@}} && {{@@ roficlip_ne @@}} && (mkdir -p {{@@ apps_bin @@}}; git clone {{@@ roficlip_url @@}} {{@@ roficlip_path @@}}; ln -s ../roficlip/roficlip.py {{@@ apps_bin @@}}) ||:"
+  pull_roficlip: '{{@@ git_installed @@}} && {{@@ roficlip_ne @@}} && (mkdir -p {{@@
+    apps_bin @@}}; git clone {{@@ roficlip_url @@}} {{@@ roficlip_path @@}}; ln -s
+    ../roficlip/roficlip.py {{@@ apps_bin @@}}) ||:'
