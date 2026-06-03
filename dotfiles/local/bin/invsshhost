@@ -1,16 +1,36 @@
 #!/bin/bash
 # Downloads current inventory and allow user to search by hostname and ssh into selected host.
 # Dependencies: curl, jq, fzf
+#
+# You can use this script as standalone application (or make short alias to it), or you run it by
+# bash keybind. For example, add this to your bashrc, to bind it to Alt+I:
+#
+# __invssh() {
+#	local selected=$(INVSSH_SILENT=true invsshhost)
+#	READLINE_LINE="${READLINE_LINE:0:$READLINE_POINT}${selected}${READLINE_LINE:$READLINE_POINT}"
+#	READLINE_POINT=$(( READLINE_POINT + ${#selected} ))
+# }
+# bind -x '"\ei":__invssh'
+#
 
 PROGNAME=$(basename "$0")
 DEFAULT_SEARCH=${@:-''}
+CACHE_DIR=${XDG_CACHE_HOME:-$HOME/.cache}
+CACHE_FILE=$CACHE_DIR/invsshhost.$USER.cache
+ETAG_FILE="$CACHE_FILE.etag"
+_INVSSH_SILENT=${INVSSH_SILENT:-false}
+
+log_e() {
+	if ! $_INVSSH_SILENT; then
+		echo "$1" > /dev/stderr
+	fi
+}
 
 if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
-	echo "Usage: $PROGNAME {default-search-string}"
-	echo "Hosts from all inventories used. Result is cached to /tmp"
+	log_e "Usage: $PROGNAME {default-search-string}"
+	log_e "Hosts from all inventories used. Result is cached to $CACHE_DIR"
 	exit 1
 fi
-
 
 download() {
 	curl https://ansible-inv.taxsee.com/all.json --etag-save "$ETAG_FILE" -s \
@@ -18,28 +38,35 @@ download() {
 		| sort | uniq | grep -v -e null -e ".alias$" > "$CACHE_FILE"
 }
 
-CACHE_FILE=/tmp/invsshhost.$USER.cache
-ETAG_FILE="$CACHE_FILE.etag"
 if [ -f "$CACHE_FILE" ]; then
-	echo "[INFO] file $CACHE_FILE found, check for update"
+	log_e "[INFO] file $CACHE_FILE found, check for update"
 	HTTP_CODE=$(curl https://ansible-inv.taxsee.com/all.json --etag-compare "$ETAG_FILE" -s -w "%{http_code}")
 	if [ "$HTTP_CODE" != "304" ]; then
-		echo "[INFO] file $CACHE_FILE outdated, download ans save to cache"
+		log_e "[INFO] file $CACHE_FILE outdated, download and save to cache"
 		download
 	fi
 else
-	echo "[INFO] file $CACHE_FILE not found, download and save to cache"
+	log_e "[INFO] file $CACHE_FILE not found, download and save to cache"
 	download
 fi
 
 HOST=$(cat "$CACHE_FILE" \
-	| fzf --query "$DEFAULT_SEARCH" --print-query -1 --header="Choose host to ssh into using all inventory, CTRL+C to cancel" \
+	| fzf --query "$DEFAULT_SEARCH" \
+		--print-query -1 \
+		--header="Choose host to ssh into from inventory, CTRL+C to cancel, ALT+R to resolve IP address" \
+		--bind 'ctrl-/:toggle-preview' \
+		--bind 'alt-r:preview(dig {})' --preview-window hidden \
 	| tail -n 1)
 
+log_e $_INVSSH_SILENT
 if [ "$HOST" != "" ]; then
 	IP=$(dig +short "$HOST")
-	echo "[INFO] ssh into $HOST ip $IP"
-	ssh $HOST
+	log_e "[INFO] run 'ssh $HOST' ($IP)"
+	if $_INVSSH_SILENT; then
+		echo ssh $HOST
+	else
+		ssh $HOST
+	fi
 else
-	echo "[INFO] no host selected"
+	log_e "[INFO] no host selected"
 fi

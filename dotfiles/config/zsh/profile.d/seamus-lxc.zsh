@@ -13,11 +13,14 @@ alias yaml2json="python3 -c 'import sys, yaml, json; json.dump(yaml.safe_load(sy
 alias venv-molecule="source ~/gitlab/ansible-molecule/venv/bin/activate"
 alias venv-ansible="source ~/gitlab/ansible-vm-config/venv/bin/activate"
 
-# # invssh helper
-alias issh='source ~/.local/bin/invsshhost'
-bindkey -s -M emacs '^H' ' issh\n'
-bindkey -s -M viins '^H' ' issh\n'
-bindkey -s -M vicmd '^H' ' issh\n'
+__invssh() {
+  BUFFER=$(INVSSH_SILENT=true invsshhost)
+  CURSOR=$#BUFFER
+}
+zle -N __invssh
+bindkey -M emacs '^H' __invssh
+bindkey -M viins '^H' __invssh
+bindkey -M vicmd '^H' __invssh
 
 # Vault helpers
 vault_ldap_login() {
