@@ -16,8 +16,3 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 if command -v fastfetch; then
   fastfetch --config mokka.jsonc
 fi
-
-# Fix cellular network problems
-alias pacman="env https_proxy=127.0.0.1:1080 pacman"
-alias paru="env https_proxy=127.0.0.1:1080 paru"
-alias garuda-update="env https_proxy=127.0.0.1:1080 garuda-update"

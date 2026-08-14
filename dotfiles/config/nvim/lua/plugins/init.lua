@@ -16,7 +16,9 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = require "configs.treesitter",
+    lazy = false,
+    build = ':TSUpdate',
+     opts = require "configs.treesitter",
   },
 
   {
@@ -57,7 +59,6 @@ return {
   {
     "OXY2DEV/markview.nvim",
     ft = "markdown",
-    config = true,
     lazy = false,
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
