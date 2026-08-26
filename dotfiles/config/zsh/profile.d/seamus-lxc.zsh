@@ -30,6 +30,7 @@ vault_ldap_login() {
 }
 vault_root_password() {	vault kv get -field 2023_root unix/ru/ssh | osc52-copy }
 vault_root_password_ir() { vault kv get -field root unix/ir/ssh | osc52-copy }
+vault_promtargets() { vault kv get -field bearer_token infra/ru/prod/promtargets/devops | osc52-copy }
 vault_my_token() { cat ~/.vault-token | osc52-copy }
 
 # Work vars
