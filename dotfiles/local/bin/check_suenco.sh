@@ -7,6 +7,8 @@ curl -s --header "Accept: application/json" \
   | python3 -m json.tool --no-ensure-ascii
 
 # с.Лесниково, ДНТ Раздолье
+# f2eb3532-0924-4e4b-bf5f-e5504d1ca95d
+# bfab3740-0b17-4545-a49d-6e911d41ac16
 curl -s --header "Accept: application/json" \
-  "https://gateway.suenco.ru/api/pon/site?guid=bfab3740-0b17-4545-a49d-6e911d41ac16" \
+  "https://gateway.suenco.ru/api/pon/site?guid=f2eb3532-0924-4e4b-bf5f-e5504d1ca95d" \
   | python3 -m json.tool --no-ensure-ascii
