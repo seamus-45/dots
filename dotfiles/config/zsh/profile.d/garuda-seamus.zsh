@@ -1,7 +1,12 @@
 # Connection helpers
 lxc() {
-  CLASS=$(xdotool getactivewindow getwindowclassname 2>/dev/null)
-  SESSION=${CLASS:-lxc}
+  if command -v kdotool; then
+    TOOL=kdotool
+  else
+    TOOL=xdotool
+  fi
+  CLASS=$($TOOL getactivewindow getwindowclassname 2>/dev/null)
+  SESSION=${CLASS:-lxc-0}
   ssh -t seamus.core tmux -u new-session -A -s ${SESSION} -t ${SESSION%-*}
 }
 
