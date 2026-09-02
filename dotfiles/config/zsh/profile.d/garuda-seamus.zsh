@@ -1,6 +1,6 @@
 # Connection helpers
 lxc() {
-  if command -v kdotool; then
+  if command -v kdotool >/dev/null; then
     TOOL=kdotool
   else
     TOOL=xdotool
@@ -16,8 +16,3 @@ export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true"
 
 # Fix bug with drop down menus not clickable
 export _JAVA_AWT_WM_NONREPARENTING=1
-
-## Show system info
-if command -v fastfetch; then
-  fastfetch --config mokka.jsonc
-fi
